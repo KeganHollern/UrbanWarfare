@@ -52,8 +52,8 @@ for "_i" from 1 to _minutes do {
 	if(!BRMini_InGame) exitWith {};
 	
 	_isZoneChange = _timeTillChange == 0;
-	if(_i <= _changeTime) then {
-		if(_isZoneChange) then {
+	if(_i <= _changeTime) then { //--- is before or equal to first zone
+		if(_isZoneChange) then { //--- time to create first
 			_zoneCenter = _nextZoneCenter;
 			_zoneSize = _zoneSize - (_zoneSize*_zoneSizeScaling);
 			_blue = createMarker ["Blue_Zone",_zoneCenter];
@@ -68,10 +68,11 @@ for "_i" from 1 to _minutes do {
 			publicVariable "BR_DT_PVAR";
 		} else {
 			_doUpdateMap = _timeTillChange == 1;
-			if(_doUpdateMap) then {
+			if(_doUpdateMap) then { //--- preview zone?
 				_scaleChange = (_zoneSize*_zoneSizeScaling);
 				_tempSize = _zoneSize - _scaleChange;
-				_nextZoneCenter = [(_zoneCenter select 0) + floor(random(_scaleChange*2)-(_scaleChange)),(_zoneCenter select 1) + floor(random(_scaleChange*2)-(_scaleChange)),0];
+				_changeDIR = random(360);
+				_nextZoneCenter = [(_zoneCenter select 0) + _scaleChange*sin(_changeDIR),(_zoneCenter select 1) + _scaleChange*cos(_changeDIR)),0];
 				_temp = createMarker ["Temp_Zone",_nextZoneCenter];
 				"Temp_Zone" setMarkerColor "ColorBlue";
 				"Temp_Zone" setMarkerShape "ELLIPSE";
@@ -91,34 +92,35 @@ for "_i" from 1 to _minutes do {
 				publicVariable "BR_DRAWZONE";
 				BR_DT_PVAR = ["YOUR MAP HAS BEEN UPDATED WITH THE BLUE ZONE!",0,0.7,10,0];
 				publicVariable "BR_DT_PVAR";
-			} else {
+			} else { //--- notify when the blue circle will be locked
 				BR_DT_PVAR = [format["IN %1 MINUTES THE PLAY AREA WILL BE RESTRICTED TO THE AREA INSIDE THE BLUE ZONE",_timeTillChange],0,0.7,5,0];
 				publicVariable "BR_DT_PVAR";
 			};
 		};
 	} else {
-		if(_i <= (_minutes-_changeTime)) then {
-			if(_isZoneChange) then {
+		if(_i <= (_minutes-_changeTime)) then { //--- still zoning?
+			if(_isZoneChange) then { //--- time to change to a new zone
 				_zoneCenter = _nextZoneCenter;
 				_zoneSize = _zoneSize - (_zoneSize*_zoneSizeScaling);
 				"Blue_Zone" setMarkerPos _zoneCenter;
 				"Blue_Zone" setMarkerSize [_zoneSize,_zoneSize];
-				"Blue_Zone" setMarkerAlpha 1;
+				"Blue_Zone" setMarkerColor "ColorBlue";
 				deleteMarker "Temp_Zone";
 				BR_DT_PVAR = ["PLAY IS NOW RESTRICTED TO THE AREA INSIDE THE BLUE ZONE!",0,0.7,10,0];
 				publicVariable "BR_DT_PVAR";
 			} else {
 				_doUpdateMap = _timeTillChange == 1;
-				if(_doUpdateMap) then {
+				if(_doUpdateMap) then { //--- time to preview a zone
 					_scaleChange = (_zoneSize*_zoneSizeScaling);
 					_tempSize = _zoneSize - _scaleChange;
-					_nextZoneCenter = [(_zoneCenter select 0) + floor(random(_scaleChange*2)-(_scaleChange)),(_zoneCenter select 1) + floor(random(_scaleChange*2)-(_scaleChange)),0];
+					_changeDIR = random(360);
+					_nextZoneCenter = [(_zoneCenter select 0) + _scaleChange*sin(_changeDIR),(_zoneCenter select 1) + _scaleChange*cos(_changeDIR)),0];
 					_temp = createMarker ["Temp_Zone",_nextZoneCenter];
 					"Temp_Zone" setMarkerColor "ColorBlue";
 					"Temp_Zone" setMarkerShape "ELLIPSE";
 					"Temp_Zone" setMarkerBrush "BORDER";
 					"Temp_Zone" setMarkerSize [_tempSize,_tempSize];
-					"Blue_Zone" setMarkerAlpha 0;	
+					"Blue_Zone" setMarkerColor "ColorRed";
 					_steps = floor ((2 * pi * _tempSize) / 15);
 					_radStep = 360 / _steps;
 					_data = [];
@@ -132,17 +134,17 @@ for "_i" from 1 to _minutes do {
 					publicVariable "BR_DRAWZONE";
 					BR_DT_PVAR = ["YOUR MAP HAS BEEN UPDATED!",0,0.7,10,0];
 					publicVariable "BR_DT_PVAR";
-				} else {
+				} else { //--- notify when a new zone will appear 
 					BR_DT_PVAR = [format["IN %1 MINUTES, THE BLUE ZONE WILL SHRINK AGAIN!",_timeTillChange],0,0.7,10,0];
 					publicVariable "BR_DT_PVAR";
 				};
 			};
-		} else {
-			if(_i < (_minutes-1)) then {
+		} else { //--- no more zones
+			if(_i < (_minutes-1)) then { //--- mulitple minutes till end
 				BR_DT_PVAR = [format["THERE IS %1 MINUTES LEFT IN THE ROUND!",_changeTime - _timeTillChange],0,0.7,10,0];
 				publicVariable "BR_DT_PVAR";
 			} else {
-				if(_i != _minutes) then {
+				if(_i != _minutes) then { //--- last minute
 					BR_DT_PVAR = ["THERE IS 1 MINUTE LEFT IN THE ROUND!",0,0.7,10,0];
 					publicVariable "BR_DT_PVAR";
 				};

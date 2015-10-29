@@ -115,11 +115,5 @@ class cfgFunctions {
 				file = "Clients\GUI\setup_GUI.sqf";
 			};
 		};
-		class FSMs {
-			class AntiTP {
-				file = "FSMs\antitp.fsm";
-				ext = ".fsm";
-			};
-		};
 	};
 };

@@ -11,10 +11,7 @@ diag_log "<START>: PLAYER RESPAWN SETUP STARTED";
 
 BRMini_GameStarted = false;
 
-[] spawn {
-	waitUntil{!isNull ((findDisplay 12) displayCtrl 51)};
-	((findDisplay 12) displayCtrl 51) ctrlremovealleventhandlers "Draw";
-};
+((findDisplay 12) displayCtrl 51) ctrlremovealleventhandlers "Draw";
 
 if(count(_this) > 1) then {
 	if((_this select 0) distance (_this select 1) < 100 ) then {

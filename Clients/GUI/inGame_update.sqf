@@ -8,17 +8,13 @@
 */
 if(count(_this) == 0) then {
 	_getCount = {
-		_objects = ((getMarkerPos "BRMini_SafeZone") nearObjects ["Man",1000]);
-		_players = 0;
-		{
-			if(alive _x && isplayer _x) then {
-				_players = _players + 1;
-			};
-		} forEach _objects;
-		_players;
+		private["_count"];
+		_count = ({alive _x && isplayer _x} count((getMarkerPos "BRMini_SafeZone") nearObjects ["Man",500]));
+		_count;
 	};
 	_count = call _getCount;
-	_text = format["<t align='center' color='#FFFFFF'>%1 PLAYERS REMAINING</t>",_count];
+	_s = if(_count > 1) then {"S"} else {""};
+	_text = format["<t align='center' color='#FFFFFF'>%1 PLAYER%2 REMAINING</t>",_count,_s];
 	with uinamespace do {
 		if(!isNull CTRL_INGAME_HEADER) then {
 			CTRL_INGAME_HEADER ctrlSetStructuredText parseText _text;

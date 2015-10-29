@@ -22,7 +22,7 @@ br_maxFogStrength = 0.1;
 call BRGH_fnc_serverConfig;
 call BRGH_fnc_playerConfig;
 call BRGH_fnc_mapSetup;
-call BRGH_fnc_vehicleHandler;
+//--- TODO: Fix Vehicle Handler Check call BRGH_fnc_vehicleHandler;
 
 BRMini_RE = compileFinal '
 	_script = if(typename _this == "STRING") then {compile _this} else {_this};

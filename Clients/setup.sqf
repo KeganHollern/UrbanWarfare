@@ -15,7 +15,7 @@ call BRGH_fnc_createInGameGUI;
 
 call BRGH_fnc_clientWeather;
 
-[] spawn BRGH_fnc_afkTimer;
+//--- TODO: Fix AFK Timer [] spawn BRGH_fnc_afkTimer;
 
 enableRadio false;
 enableSentences false;
@@ -27,13 +27,11 @@ setViewDistance 1500;
 
 [] spawn {
 	while{true} do {
-		_units = units (group player);
 		setGroupIconsVisible [false,false];
-		if(count _units > 1) then {
-			_grp = group player;
-			[player] joinSilent (creategroup (side player));
-			deletegroup _grp;
-		};
+		waitUntil{units (group player) > 1};
+		_grp = group player;
+		[player] joinSilent (creategroup (side player));
+		deletegroup _grp;
 	};
 };
 
