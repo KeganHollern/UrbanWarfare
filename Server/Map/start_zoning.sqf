@@ -72,7 +72,7 @@ for "_i" from 1 to _minutes do {
 				_scaleChange = (_zoneSize*_zoneSizeScaling);
 				_tempSize = _zoneSize - _scaleChange;
 				_changeDIR = random(360);
-				_nextZoneCenter = [(_zoneCenter select 0) + _scaleChange*sin(_changeDIR),(_zoneCenter select 1) + _scaleChange*cos(_changeDIR)),0];
+				_nextZoneCenter = [(_zoneCenter select 0) + _scaleChange*sin(_changeDIR),(_zoneCenter select 1) + _scaleChange*cos(_changeDIR),0];
 				_temp = createMarker ["Temp_Zone",_nextZoneCenter];
 				"Temp_Zone" setMarkerColor "ColorBlue";
 				"Temp_Zone" setMarkerShape "ELLIPSE";
@@ -114,7 +114,7 @@ for "_i" from 1 to _minutes do {
 					_scaleChange = (_zoneSize*_zoneSizeScaling);
 					_tempSize = _zoneSize - _scaleChange;
 					_changeDIR = random(360);
-					_nextZoneCenter = [(_zoneCenter select 0) + _scaleChange*sin(_changeDIR),(_zoneCenter select 1) + _scaleChange*cos(_changeDIR)),0];
+					_nextZoneCenter = [(_zoneCenter select 0) + _scaleChange*sin(_changeDIR),(_zoneCenter select 1) + _scaleChange*cos(_changeDIR),0];
 					_temp = createMarker ["Temp_Zone",_nextZoneCenter];
 					"Temp_Zone" setMarkerColor "ColorBlue";
 					"Temp_Zone" setMarkerShape "ELLIPSE";

@@ -28,7 +28,7 @@ setViewDistance 1500;
 [] spawn {
 	while{true} do {
 		setGroupIconsVisible [false,false];
-		waitUntil{units (group player) > 1};
+		waitUntil{count(units (group player)) > 1};
 		_grp = group player;
 		[player] joinSilent (creategroup (side player));
 		deletegroup _grp;
