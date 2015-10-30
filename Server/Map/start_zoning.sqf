@@ -70,7 +70,7 @@ for "_i" from 1 to _minutes do {
 				BR_DT_PVAR = ["YOUR MAP HAS BEEN UPDATED WITH THE BLUE ZONE!",0,0.7,10,0];
 				publicVariable "BR_DT_PVAR";
 			} else { //--- notify when the blue circle will be locked
-				BR_DT_PVAR = [format["IN %1 MINUTES THE PLAY AREA WILL BE RESTRICTED TO THE AREA INSIDE THE BLUE ZONE",_timeTillChange],0,0.7,5,0];
+				BR_DT_PVAR = [format["IN %1 MINUTES THE BLUE ZONE WILL BE CREATED",_timeTillChange],0,0.7,5,0];
 				publicVariable "BR_DT_PVAR";
 			};
 		};
@@ -112,7 +112,7 @@ for "_i" from 1 to _minutes do {
 					BR_DT_PVAR = ["YOUR MAP HAS BEEN UPDATED!",0,0.7,10,0];
 					publicVariable "BR_DT_PVAR";
 				} else { //--- notify when a new zone will appear 
-					BR_DT_PVAR = [format["IN %1 MINUTES, THE BLUE ZONE WILL SHRINK AGAIN!",_timeTillChange],0,0.7,10,0];
+					BR_DT_PVAR = [format["IN %1 MINUTES, THE PLAY AREA WILL SHRINK AGAIN!",_timeTillChange],0,0.7,10,0];
 					publicVariable "BR_DT_PVAR";
 				};
 			};
