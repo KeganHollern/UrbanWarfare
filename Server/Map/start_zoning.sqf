@@ -23,32 +23,9 @@ if(_zoneSizeScaling >= 1) then {
 _timeTillChange = _changeTime;
 for "_i" from 1 to _minutes do {
 	_timeTillChange = _timeTillChange - 1;
-	_time = time + 60;
-	_nextTime = time+20;
-	_total = [];
-	{if(isPlayer _x && alive _x) then {_total set [count(_total),_x];};} forEach (_zoneCenter nearObjects ["Man",1000]);
-	_inside = [];
-	{if(isPlayer _x && alive _x) then {_inside set [count(_inside),_x];};} forEach (_zoneCenter nearObjects ["Man",_zoneSize]);
-	_outside = _total - _inside;
-	BR_DT_PVAR = ["YOU ARE OUTSIDE THE PLAY AREA! GET INSIDE NOW!",0,0.7,10,0];
-	{(owner _x) publicVariableClient "BR_DT_PVAR";} forEach _outside;
-	while{true} do {
-		if(time >= _time) exitWith {};
-		if(!BRMini_InGame) exitWith {};
-		if(time >= _nextTime) then {
-			_total = [];
-			{if(isPlayer _x && alive _x) then {_total set [count(_total),_x];};} forEach (_zoneCenter nearObjects ["Man",1000]);
-			_inside = [];
-			{if(isPlayer _x && alive _x) then {_inside set [count(_inside),_x];};} forEach (_zoneCenter nearObjects ["Man",_zoneSize]);
-			_outside = _total - _inside;
-			_nextTime = time + 20;
-			{_x setDamage (damage _x + (1/6));_x setVariable ["outside",true,false];} forEach _outside;
-			{if(_x getVariable ["outside",false]) then {BR_DT_PVAR = ["YOU ARE BACK INSIDE THE PLAY AREA!",0,0.7,10,0];(owner _x) publicVariableClient "BR_DT_PVAR";_x setVariable ["outside",false];};} forEach _inside;
-			BR_DT_PVAR = ["YOU ARE STILL OUTSIDE THE PLAY AREA! GET INSIDE NOW!",0,0.7,10,0];
-			{(owner _x) publicVariableClient "BR_DT_PVAR";} forEach _outside;
-		};
-	};
 	
+	_time = time + 60;
+	waitUntil{time >= _time || !BRMini_InGame};
 	if(!BRMini_InGame) exitWith {};
 	
 	_isZoneChange = _timeTillChange == 0;
@@ -72,7 +49,7 @@ for "_i" from 1 to _minutes do {
 				_scaleChange = (_zoneSize*_zoneSizeScaling);
 				_tempSize = _zoneSize - _scaleChange;
 				_changeDIR = random(360);
-				_nextZoneCenter = [(_zoneCenter select 0) + _scaleChange*sin(_changeDIR),(_zoneCenter select 1) + _scaleChange*cos(_changeDIR),0];
+				_nextZoneCenter = [(_zoneCenter select 0) + random(_scaleChange*sin(_changeDIR)),(_zoneCenter select 1) + random(_scaleChange*cos(_changeDIR)),0];
 				_temp = createMarker ["Temp_Zone",_nextZoneCenter];
 				"Temp_Zone" setMarkerColor "ColorBlue";
 				"Temp_Zone" setMarkerShape "ELLIPSE";
@@ -114,7 +91,7 @@ for "_i" from 1 to _minutes do {
 					_scaleChange = (_zoneSize*_zoneSizeScaling);
 					_tempSize = _zoneSize - _scaleChange;
 					_changeDIR = random(360);
-					_nextZoneCenter = [(_zoneCenter select 0) + _scaleChange*sin(_changeDIR),(_zoneCenter select 1) + _scaleChange*cos(_changeDIR),0];
+					_nextZoneCenter = [(_zoneCenter select 0) + random(_scaleChange*sin(_changeDIR)),(_zoneCenter select 1) + random(_scaleChange*cos(_changeDIR)),0];
 					_temp = createMarker ["Temp_Zone",_nextZoneCenter];
 					"Temp_Zone" setMarkerColor "ColorBlue";
 					"Temp_Zone" setMarkerShape "ELLIPSE";

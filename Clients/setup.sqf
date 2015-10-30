@@ -24,6 +24,7 @@ showSubtitles false;
 setObjectViewDistance [1000,0];
 setViewDistance 1500;
 
+[] spawn BRGH_fnc_autoReload;
 
 [] spawn {
 	while{true} do {
@@ -50,6 +51,23 @@ setViewDistance 1500;
 		_obj setObjectTexture [0,_texture];
 		_obj enableSimulation false;
 	} forEach _data;
+};
+
+
+(findDisplay 46) displayAddEventHandler ["KeyDown",{
+	_key = _this select 1;
+	_success = false;
+	if(_key in (ActionKeys "getOver")) then {
+		if((inputAction "Turbo" > 0) || (inputAction "MoveFastForward" > 0) || (speed player > 15)) then {
+			[] spawn BRGH_fnc_doJump;
+			_success = true;
+		};
+	};
+	_success;
+}];
+
+"Animation" addPublicVariableEventHandler {
+	(_this select 1) spawn BRGH_fnc_Animation;
 };
 
 "BR_LS_PVAR" addPublicVariableEventHandler {

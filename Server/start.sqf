@@ -17,17 +17,18 @@ _weatherThread = [] spawn BRGH_fnc_startWeather;
 
 call BRGH_fnc_spawnLoot;
 call BRGH_fnc_waitForPlayers;
-
-uiSleep 10;
-BR_DT_PVAR = ["THIS IS BATTLE ROYALE",0,0.45,5,0];
+BR_DT_PVAR = ["The next round is starting...",0,0.45,5,0];
+publicVariable "BR_DT_PVAR";
+uiSleep 7;
+BR_DT_PVAR = ["Welcome to Ghost Hotel",0,0.45,5,0];
 publicVariable "BR_DT_PVAR";
 uiSleep 6;
-BR_DT_PVAR = ["GHOST HOTEL",0,0.45,5,0];
+BR_DT_PVAR = ["Please report any bugs",0,0.45,5,0];
 publicVariable "BR_DT_PVAR";
-uiSleep 10;
-BR_DT_PVAR = ["A PLAYERUNKNOWN PRODUCTION",0,0.45,5,0];
+uiSleep 6;
+BR_DT_PVAR = ["Enjoy the round!",0,0.45,5,0];
 publicVariable "BR_DT_PVAR";
-uiSleep 10;
+uiSleep 7;
 
 BRMini_GameStarted = true;
 publicVariable "BRMini_GameStarted";
@@ -65,7 +66,7 @@ waitUntil{!BRMini_InGame};
 
 BRMini_ServerOn = false;
 
-uiSleep 4;
+uiSleep 5;
 
 _winners = (getMarkerPos "BRMini_SafeZone") nearObjects ["Man",300];
 {
@@ -88,7 +89,7 @@ _winners = (getMarkerPos "BRMini_SafeZone") nearObjects ["Man",300];
 		BR_DT_PVAR = [ _txt,0,0.45,10,0];
 		publicVariable "BR_DT_PVAR";
 		uiSleep 5;
-		BR_DT_PVAR = ["YOU ARE A BATTLE ROYALE: GHOST HOTEL WINNER!",0,0.45,10,0];
+		BR_DT_PVAR = ["YOU ARE A GHOST HOTEL WINNER!",0,0.45,10,0];
 		publicVariable "BR_DT_PVAR";
 		uiSleep 5;
 		BR_DT_PVAR = ["CONGRATULATIONS!",0,0.45,10,0];

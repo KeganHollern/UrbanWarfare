@@ -55,33 +55,19 @@ if(overcast <= 0.7) exitWith {
 };
 diag_log format["BR WEATHER: Handling Weather. Overcast: %1 Rain: %2",overcast,rain];
 
-BR_GetLightningPlayers = {
-	_people = [];
-	{	
-		_exit = false;
-		_player = _x;
-		{
-			if(_player distance _x < 800) exitWith { _exit = true; };
-		} forEach _people;
-		if(!_exit) then {_people set[count(_people),_player];};
-	} forEach playableUnits;
-	_people;
-};
-
 while{true} do {
 	waitUntil{rain > 0.85 || !BRMini_ServerOn};
 	if(!BRMini_ServerOn) exitWith {};
-	{
-		_xC = random(1600)-800;
-		_yC = random(1600)-800;
-		_pos = getposatl _x;
-		_xC = (_pos select 0) + _xC;
-		_yC = (_pos select 1) + _yC;
-		_pos set[0,_xC];
-		_pos set[1,_yC];
-		_pos set[2,0];
-		BR_LS_PVAR = _pos;
-		publicVariable "BR_LS_PVAR";
-	} forEach (call BR_GetLightningPlayers);
-	uiSleep (8 + (4 - (3*rain)) - random(1));
+	_x = playableUnits select floor(random(count(playableUnits)));
+	_xC = random(1600)-800;
+	_yC = random(1600)-800;
+	_pos = getposatl _x;
+	_xC = (_pos select 0) + _xC;
+	_yC = (_pos select 1) + _yC;
+	_pos set[0,_xC];
+	_pos set[1,_yC];
+	_pos set[2,0];
+	BR_LS_PVAR = _pos;
+	publicVariable "BR_LS_PVAR";
+	uiSleep (7.5 + (4 - (3*rain)) - random(1));
 };

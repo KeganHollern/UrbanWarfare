@@ -2,7 +2,6 @@ author = "Ryan Cheeky";
 onLoadName = "Ghost Hotel";
 onLoadMission = "Fast paced last man standing";
 joinUnassigned = 0;
-loadScreen = "br_loadscreen.paa";
 respawn = "BASE";	
 respawndelay = 3;
 enableDebugConsole = 0;

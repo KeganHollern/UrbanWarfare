@@ -52,5 +52,8 @@ diag_log "<START>: CLEANING BLUEZONE";
 BRMINI_ZoneObjects = [];
 
 waitUntil{(player distance (getMarkerPos "BRMini_SafeZone")) < 500};
+
+[] spawn BRGH_fnc_circleDamage;
 player allowDamage true;
+
 diag_log "<START>: ROUND STARTED";

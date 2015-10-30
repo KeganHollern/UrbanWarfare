@@ -64,7 +64,21 @@ class cfgFunctions {
 			class clientReset {
 				file = "Clients\reset.sqf";
 			};
+			//zoning
+			class circleDamage {
+				file = "Clients\Zoning\circle_damage.sqf";
+			};
+			//functions
+			class animation {
+				file = "Clients\Functions\animation.sqf";
+			};
 			//player
+			class doJump {
+				file = "Clients\Player\player_jump.sqf";
+			};
+			class autoReload {
+				file = "Clients\Player\auto_reload.sqf";
+			};
 			class playerSetup {
 				file = "Clients\Player\setup_player.sqf";
 			};
