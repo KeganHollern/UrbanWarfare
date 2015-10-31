@@ -15,8 +15,13 @@ while{alive player} do {
 		} else {
 			if((time-10) > _messageTime) then {
 				_messageTime = time;
-				player setDamage (damage player + (1/12));
-				["YOU ARE STILL OUTSIDE THE PLAY AREA!",0,0.7,5,0] spawn BIS_fnc_dynamicText;
+				_damage = (damage player + (1/12));
+				if(_damage >= 1) then {
+					player setVariable["circleKill",true,true];
+				} else {
+					["YOU ARE STILL OUTSIDE THE PLAY AREA!",0,0.7,5,0] spawn BIS_fnc_dynamicText;
+				};
+				player setDamage _damage;
 			};
 		};
 	};
