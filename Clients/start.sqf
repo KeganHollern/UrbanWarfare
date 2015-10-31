@@ -37,7 +37,9 @@ if(_count > 0) exitWith {
 	call BRGH_fnc_endVON;
 	call BRGH_fnc_endSpectate;
 	if !(alive player) exitWith {};
+	_body = player;
 	player setDamage 1;
+	hideBody _body;
 };
 ["<t align='center' color='#FFFFFF'>WAITING FOR THE ROUND TO START</t>"] call BRGH_fnc_updateInGameGUI;
 waitUntil{BRMini_GameStarted};
@@ -52,7 +54,8 @@ diag_log "<START>: CLEANING BLUEZONE";
 BRMINI_ZoneObjects = [];
 
 waitUntil{(player distance (getMarkerPos "BRMini_SafeZone")) < 500};
-
+uiSleep 3;
+player setVariable ["circleKill",false,true];
 [] spawn BRGH_fnc_circleDamage;
 player allowDamage true;
 

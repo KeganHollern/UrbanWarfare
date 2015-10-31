@@ -15,7 +15,7 @@ _zoneCenter = (getMarkerPos "BRMini_SafeZone");
 _zoneSize = 280;
 _nextZoneCenter = [0,0,0];
 	
-_zoneSizeScaling = 35;
+_zoneSizeScaling = 40;
 
 if(_zoneSizeScaling >= 1) then {
 	_zoneSizeScaling = _zoneSizeScaling / 100; 

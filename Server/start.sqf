@@ -96,6 +96,7 @@ _winners = (getMarkerPos "BRMini_SafeZone") nearObjects ["Man",300];
 		publicVariable "BR_DT_PVAR";
 		uiSleep 5;
 		_x setDamage 1;
+		hidebody _x;
 	};
 } forEach _winners;
 

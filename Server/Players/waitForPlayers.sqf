@@ -18,13 +18,13 @@ while{true} do {
 	_players = call _countPlayers;
 	if(_players >= BRMini_Min_Players) exitWith {};
 	while{true} do {
+		if(_players >= BRMini_Min_Players) exitWith {};
 		BR_DT_PVAR = [format[(localize "str_BRGH_waitingFor") + " %1 " + (localize "str_BRGH_morePlayers") + "!",BRMini_Min_Players - _players],0,0.45,5,0];
 		publicVariable "BR_DT_PVAR";
-		if(_players >= BRMini_Min_Players) exitWith {};
 		_time = time + 30;
 		waitUntil{_players != (call _countPlayers) || time >= _time};
 		_players = call _countPlayers;
 	};
 };	
-
+diag_log "<WAIT4PLRS>: MINIMUM PLAYER COUNT REACHED";
 uiSleep 30;
