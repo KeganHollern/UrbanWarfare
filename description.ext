@@ -29,3 +29,4 @@ class CfgUnitInsignia
 };
 
 #include "cfgFunctions.hpp"
+#include "GUI\includes.hpp"

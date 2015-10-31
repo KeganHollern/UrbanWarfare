@@ -110,6 +110,9 @@ class cfgFunctions {
 				file = "Clients\VON\end_von.sqf";
 			};
 			//GUI
+			class showReport {
+				file = "Clients\GUI\show_report.sqf";
+			};
 			class createInGameGUI {
 				file = "Clients\GUI\inGame_create.sqf";
 			};

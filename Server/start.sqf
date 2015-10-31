@@ -17,8 +17,13 @@ _weatherThread = [] spawn BRGH_fnc_startWeather;
 
 call BRGH_fnc_spawnLoot;
 call BRGH_fnc_waitForPlayers;
-BR_DT_PVAR = ["The next round is starting...",0,0.45,5,0];
-publicVariable "BR_DT_PVAR";
+if(BRMini_GamesPlayed > 1) then {
+	BR_DT_PVAR = ["The next round is starting...",0,0.45,5,0];
+	publicVariable "BR_DT_PVAR";
+} else {
+	BR_DT_PVAR = ["The first round is starting...",0,0.45,5,0];
+	publicVariable "BR_DT_PVAR";
+};
 uiSleep 7;
 BR_DT_PVAR = ["Welcome to Ghost Hotel",0,0.45,5,0];
 publicVariable "BR_DT_PVAR";
@@ -84,19 +89,18 @@ _winners = (getMarkerPos "BRMini_SafeZone") nearObjects ["Man",300];
 		};
 		_score = _score + 1;
 		BRMini_WinnerScores set[_index,_score];
-	
-		_txt = format["%1 - WINNER, WINNER, CHICKEN DINNER!",_name];
-		BR_DT_PVAR = [ _txt,0,0.45,10,0];
-		publicVariable "BR_DT_PVAR";
-		uiSleep 5;
-		BR_DT_PVAR = ["YOU ARE A GHOST HOTEL WINNER!",0,0.45,10,0];
+		
+		BR_DT_PVAR = [ format["%1 IS THE LAST MAN STANDING!",_name],0,0.45,10,0];
 		publicVariable "BR_DT_PVAR";
 		uiSleep 5;
 		BR_DT_PVAR = ["CONGRATULATIONS!",0,0.45,10,0];
 		publicVariable "BR_DT_PVAR";
 		uiSleep 5;
+		BR_DT_PVAR = ["YOU ARE A GHOST HOTEL WINNER!",0,0.45,10,0];
+		publicVariable "BR_DT_PVAR";
+		uiSleep 5;
 		_x setDamage 1;
-		hidebody _x;
+		deleteVehicle _x;
 	};
 } forEach _winners;
 

@@ -9,6 +9,7 @@
 
 diag_log "<START>: ONE TIME SETUP STARTED";
 BRMINI_ZoneObjects = [];
+BRMINI_ReportItems = [];
 
 call BRGH_fnc_setupGUI;
 call BRGH_fnc_createInGameGUI;

@@ -8,6 +8,17 @@
 */
 call BRGH_fnc_playerSetup;
 
+BRMINI_ReportItems = [
+	false, //--- Show report 0
+	[], //--- Weapons 1
+	[], //--- Kills 2
+	"", //--- Killer / Winner 3
+	0, //--- Killer HP if killed 4
+	0, //--- Killed from 5
+	0, //--- Time Alive 6
+	1  //--- Finish Place 7
+];
+
 diag_log "<START>: START VON";
 call BRGH_fnc_startVON;
 
@@ -55,8 +66,9 @@ BRMINI_ZoneObjects = [];
 
 waitUntil{(player distance (getMarkerPos "BRMini_SafeZone")) < 500};
 uiSleep 3;
+BRMINI_ReportItems set [6,time];
 player setVariable ["circleKill",false,true];
 [] spawn BRGH_fnc_circleDamage;
 player allowDamage true;
-
+BRMINI_ReportItems set[0,true];
 diag_log "<START>: ROUND STARTED";

@@ -11,6 +11,8 @@ diag_log "<START>: PLAYER RESPAWN SETUP STARTED";
 
 BRMini_GameStarted = false;
 
+call BRGH_fnc_showReport;
+
 ((findDisplay 12) displayCtrl 51) ctrlremovealleventhandlers "Draw";
 
 if(count(_this) > 1) then {

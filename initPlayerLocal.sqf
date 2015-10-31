@@ -13,6 +13,7 @@ onPreloadFinished {
 	[] spawn BRGH_fnc_clientStart;
 };		
 player linkItem "ItemMap";
+player linkItem "ItemGPS";
 
 //--- Map Texture Fix
 if (getNumber ( missionConfigFile >> "briefing" ) != 1) then {
