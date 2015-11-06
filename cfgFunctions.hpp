@@ -49,8 +49,8 @@ class cfgFunctions {
 			class spawnLoot {
 				file = "Server\Loot\spawn_loot.sqf";
 			};
-			class lootConfig {
-				file = "Server\Loot\loot_config.sqf";
+			class lootManager {
+				file = "Server\Loot\loot_manager.sqf";
 			};
 		};
 		class Client {

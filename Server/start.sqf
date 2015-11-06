@@ -9,13 +9,10 @@
 
 BRMini_GamesPlayed = BRMini_GamesPlayed + 1;
 
-call BRGH_fnc_lootConfig;
-
-
 _fogThread = [] call BRGH_fnc_simpleFog;
 _weatherThread = [] spawn BRGH_fnc_startWeather;
+_lootThread = [] spawn BRGH_fnc_lootManager;
 
-call BRGH_fnc_spawnLoot;
 call BRGH_fnc_waitForPlayers;
 if(BRMini_GamesPlayed > 1) then {
 	BR_DT_PVAR = ["The next round is starting...",0,0.45,5,0];
@@ -103,7 +100,7 @@ _winners = (getMarkerPos "BRMini_SafeZone") nearObjects ["Man",300];
 		deleteVehicle _x;
 	};
 } forEach _winners;
-
+terminate _lootThread;
 uiSleep 4;
 
-[[_fogThread,_weatherThread],[]] spawn BRGH_fnc_serverReset;
+[[_fogThread,_weatherThread,_lootThread],[]] spawn BRGH_fnc_serverReset;
