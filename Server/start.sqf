@@ -22,7 +22,7 @@ if(BRMini_GamesPlayed > 1) then {
 	publicVariable "BR_DT_PVAR";
 };
 uiSleep 7;
-BR_DT_PVAR = ["Welcome to Ghost Hotel",0,0.45,5,0];
+BR_DT_PVAR = ["Welcome to Urban Warfare",0,0.45,5,0];
 publicVariable "BR_DT_PVAR";
 uiSleep 6;
 BR_DT_PVAR = ["Please report any bugs",0,0.45,5,0];
@@ -93,7 +93,7 @@ _winners = (getMarkerPos "BRMini_SafeZone") nearObjects ["Man",300];
 		BR_DT_PVAR = ["CONGRATULATIONS!",0,0.45,10,0];
 		publicVariable "BR_DT_PVAR";
 		uiSleep 5;
-		BR_DT_PVAR = ["YOU ARE A GHOST HOTEL WINNER!",0,0.45,10,0];
+		BR_DT_PVAR = ["YOU ARE AN URBAN WARFARE WINNER!",0,0.45,10,0];
 		publicVariable "BR_DT_PVAR";
 		uiSleep 5;
 		_x setDamage 1;

@@ -1,5 +1,5 @@
 author = "Ryan Cheeky";
-onLoadName = "Ghost Hotel";
+onLoadName = "Urban Warfare";
 onLoadMission = "Fast paced last man standing";
 joinUnassigned = 0;
 respawn = "BASE";	
@@ -21,7 +21,7 @@ class CfgUnitInsignia
 {
 	class brghID
 	{
-		displayName = "Battle Royale: Ghost Hotel";
+		displayName = "Urban Warfare";
 		author = "PLAYERUNKNOWN";
 		texture = "images\insignia.paa";
 		textureVehicle = "";

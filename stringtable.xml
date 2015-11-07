@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<Project name="BattleRoyale GhostHotel">
+<Project name="UrbanWarfare">
 	<Package name="Wait_For_Players">
 		<Key ID="str_BRGH_waitingFor">
 			<Original>WAITING FOR</Original>
