@@ -9,18 +9,21 @@
 
 BRMini_GamesPlayed = BRMini_GamesPlayed + 1;
 
-_fogThread = [] call BRGH_fnc_simpleFog;
+//--- Start Weather
+_fogThread = [] spawn BRGH_fnc_simpleFog; 
 _weatherThread = [] spawn BRGH_fnc_startWeather;
+
+//--- Start Loot
 _lootThread = [] spawn BRGH_fnc_lootManager;
 
+//--- Wait for min players
 call BRGH_fnc_waitForPlayers;
-if(BRMini_GamesPlayed > 1) then {
-	BR_DT_PVAR = ["The next round is starting...",0,0.45,5,0];
-	publicVariable "BR_DT_PVAR";
-} else {
-	BR_DT_PVAR = ["The first round is starting...",0,0.45,5,0];
-	publicVariable "BR_DT_PVAR";
-};
+
+//--- Announce round number
+BR_DT_PVAR = [format["Round number %1 is starting...",(BRMini_GamesPlayed + 1)],0,0.45,5,0];
+publicVariable "BR_DT_PVAR";
+
+//--- Start opening credit
 uiSleep 7;
 BR_DT_PVAR = ["Welcome to Urban Warfare",0,0.45,5,0];
 publicVariable "BR_DT_PVAR";
@@ -32,11 +35,14 @@ BR_DT_PVAR = ["Enjoy the round!",0,0.45,5,0];
 publicVariable "BR_DT_PVAR";
 uiSleep 7;
 
+//--- Announce round start
 BRMini_GameStarted = true;
 publicVariable "BRMini_GameStarted";
 
+//--- Disable Input
 "DISABLE_EVENTS = (findDisplay 46) displayAddEventHandler ['KeyDown',{true}];" call BRMini_RE;
 
+//--- Teleport
 _pos = (getMarkerPos "BRMini_SafeZone");
 _roads = _pos nearRoads 150;	
 {
@@ -44,6 +50,7 @@ _roads = _pos nearRoads 150;
 	_x setposatl _pos;
 } forEach playableUnits;
 
+//--- Countdown to start
 uiSleep 1;
 BR_DT_PVAR = ["3",0,0.45,1,0];
 publicVariable "BR_DT_PVAR";
@@ -58,23 +65,28 @@ BRMini_InGame = true;
 BR_DT_PVAR = ["GOOD LUCK!",0,0.45,1,0];
 publicVariable "BR_DT_PVAR";
 
+//--- Enable input again
 "(findDisplay 46) displayRemoveEventHandler ['KeyDown',DISABLE_EVENTS];" call BRMini_RE;
 
+//--- Start death messages and zoning
 [] spawn BRGH_fnc_deathMessages;
 [] spawn BRGH_fnc_startZoning;
 
-
+//--- Wait till game end
 waitUntil{!BRMini_InGame};
 
 BRMini_ServerOn = false;
 
 uiSleep 5;
 
+//--- Announce all winners
 _winners = (getMarkerPos "BRMini_SafeZone") nearObjects ["Man",300];
+_numWinners = count(_winners);
 {
 	if(alive _x && isplayer _x) then {
 		_name = name _x;
-
+		
+		//--- find winner data index & increment their score
 		_index = BRMini_Winners find _name;
 		if(_index == -1) then {
 			_index = count(BRMini_Winners);
@@ -87,8 +99,14 @@ _winners = (getMarkerPos "BRMini_SafeZone") nearObjects ["Man",300];
 		_score = _score + 1;
 		BRMini_WinnerScores set[_index,_score];
 		
-		BR_DT_PVAR = [ format["%1 IS THE LAST MAN STANDING!",_name],0,0.45,10,0];
-		publicVariable "BR_DT_PVAR";
+		//--- announce name of winner (fix for when there are multiple winners to avoid confusion)
+		if(_numWinners == 1) then {
+			BR_DT_PVAR = [ format["%1 IS THE LAST MAN STANDING!",_name],0,0.45,10,0];
+			publicVariable "BR_DT_PVAR";
+		} else {
+			BR_DT_PVAR = [ format["%1 IS ONE OF THE LAST MEN STANDING!",_name],0,0.45,10,0];
+			publicVariable "BR_DT_PVAR";
+		};
 		uiSleep 5;
 		BR_DT_PVAR = ["CONGRATULATIONS!",0,0.45,10,0];
 		publicVariable "BR_DT_PVAR";
@@ -96,11 +114,22 @@ _winners = (getMarkerPos "BRMini_SafeZone") nearObjects ["Man",300];
 		BR_DT_PVAR = ["YOU ARE AN URBAN WARFARE WINNER!",0,0.45,10,0];
 		publicVariable "BR_DT_PVAR";
 		uiSleep 5;
+		
+		//--- The winner wins a nice death & deletion
 		_x setDamage 1;
 		deleteVehicle _x;
 	};
 } forEach _winners;
+
+//--- Fix for no annoucing when no one wins
+if(_numWinners == 0) then {
+	BR_DT_PVAR = ["NO ONE IS LEFT STANDING!",0,0.45,10,0];
+	publicVariable "BR_DT_PVAR";
+};
+
+//--- Stop loot thread
 terminate _lootThread;
 uiSleep 4;
 
+//--- reset server
 [[_fogThread,_weatherThread,_lootThread],[]] spawn BRGH_fnc_serverReset;
