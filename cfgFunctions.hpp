@@ -38,6 +38,9 @@ class cfgFunctions {
 			class vehicleHandler {
 				file = "Server\Map\vehicle_handler.sqf";
 			};
+			class findPlayarea {
+				file = "Server\Map\find_playarea.sqf";
+			};
 			//weather
 			class simpleFog {
 				file = "Server\Weather\fn_simpleFog.sqf";

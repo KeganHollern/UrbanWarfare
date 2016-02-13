@@ -20,11 +20,6 @@ _startingWindGusts = random(1);
 
 _hour = floor(random(24));
 _min = floor(random(60));
-if(_hour > 18 || _hour < 5) then {
-	BRMini_Loot set [count(BRMini_Loot),["NVGoggles",ITEM,CIV,1]];
-	BRMini_Loot set [count(BRMini_Loot),["NVGoggles_OPFOR",ITEM,CIV,1]];
-	BRMini_Loot set [count(BRMini_Loot),["NVGoggles_INDEP",ITEM,CIV,1]];
-};
 [[2011,1,6,_hour,_min]] call BIS_fnc_setDate;
 
 _startingOverCast call BIS_fnc_setOvercast;

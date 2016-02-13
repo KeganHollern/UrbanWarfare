@@ -6,6 +6,8 @@
 	Parameters: n/a
 	Returns: n/a
 */
+call BRGH_fnc_findPlayarea;
+call BRGH_fnc_mapSetup; //--- update black zone
 
 BRMini_GamesPlayed = BRMini_GamesPlayed + 1;
 
@@ -20,7 +22,7 @@ _lootThread = [] spawn BRGH_fnc_lootManager;
 call BRGH_fnc_waitForPlayers;
 
 //--- Announce round number
-BR_DT_PVAR = [format["Round number %1 is starting...",(BRMini_GamesPlayed + 1)],0,0.45,5,0];
+BR_DT_PVAR = [format["Round number %1 is starting...",BRMini_GamesPlayed],0,0.45,5,0];
 publicVariable "BR_DT_PVAR";
 
 //--- Start opening credit

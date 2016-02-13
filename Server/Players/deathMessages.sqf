@@ -109,4 +109,10 @@ removeMissionEventHandler ["HandleDisconnect",_OnDC];
 {
 	_x removeAllMPEventHandlers "MPKilled";
 } forEach playableUnits;
+
+if(BRMini_Min_Players == 1) then {
+	diag_log "Server in debug status. waiting 5 min to end round.";
+	uiSleep 300;
+};
+
 BRMini_InGame = false;

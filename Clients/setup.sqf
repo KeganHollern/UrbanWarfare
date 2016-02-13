@@ -37,24 +37,6 @@ setViewDistance 1500;
 	};
 };
 
-[] spawn {
-	waituntil{!isNil 'BR_DRAWBLACKZONE'};
-	_data = BR_DRAWBLACKZONE;
-	{
-		_type = _x select 0;
-		_position = _x select 1;
-		_dir = _x select 2;
-		_texture = _x select 3;
-		
-		_obj = _type createVehicleLocal _position;
-		_obj setDir _dir;
-		_obj setPosATL _position;
-		_obj setObjectTexture [0,_texture];
-		_obj enableSimulation false;
-	} forEach _data;
-};
-
-
 (findDisplay 46) displayAddEventHandler ["KeyDown",{
 	_key = _this select 1;
 	_success = false;

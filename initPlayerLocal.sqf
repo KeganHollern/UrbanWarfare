@@ -6,6 +6,30 @@
 	Parameters: n/a
 	Returns: n/a
 */
+BRMINI_BZoneObjects = [];
+//--- fix for black zone not drawing in first round
+"BR_DRAWBLACKZONE" addPublicVariableEventHandler {
+	_data = _this select 1;
+	_old = BRMINI_BZoneObjects;
+	BRMINI_BZoneObjects = [];
+	{
+		_type = _x select 0;
+		_position = _x select 1;
+		_dir = _x select 2;
+		_texture = _x select 3;
+		
+		_obj = _type createVehicleLocal _position;
+		_obj setDir _dir;
+		_obj setPosATL _position;
+		_obj setObjectTexture [0,_texture];
+		_obj enableSimulation false;
+		BRMINI_BZoneObjects pushBack _obj;
+	} forEach _data;
+	{
+		deleteVehicle _x;
+	} forEach _old;
+};
+
 onPreloadFinished {
 	onPreloadFinished {};
 	enableEnvironment false;

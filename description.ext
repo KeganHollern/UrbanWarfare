@@ -28,5 +28,6 @@ class CfgUnitInsignia
 	};
 };
 
+#include "cfgLoot.hpp"
 #include "cfgFunctions.hpp"
 #include "GUI\includes.hpp"

@@ -66,19 +66,6 @@ if(random(100) < _buildingChance) then {
 		_usedCount = [];
 		scopeName "ExitLoop";
 		for "_i" from 1 to (floor(random(3)) + 1) do {
-			//--- Generate Loot Value
-			_value = "HighValue";
-			_rand = random(100);
-			_total = _lowChance;
-			if(_rand < _total) then {
-				_value = "LowValue";
-			} else {
-				_total = _total + _mediumChance;
-				if(_rand < _total) then {
-					_value = "MediumValue";
-				};
-			};
-			
 			//--- Generate Gear Type W/O allowing broken loot piles
 			_gearType = "";
 			_max = _weaponChance + _magazineChance + _gearChance + _clothingChance + _backpackChance;
@@ -129,6 +116,18 @@ if(random(100) < _buildingChance) then {
 				};
 			};
 			
+			_value = "HighValue";
+			_rand = random(100);
+			_total = _lowChance;
+			if(_rand < _total) then {
+				_value = "LowValue";
+			} else {
+				_total = _total + _mediumChance;
+				if(_rand < _total) then {
+					_value = "MediumValue";
+				};
+			};
+			
 			_lootList = getArray(missionConfigFile >> "CfgLoot" >> "LootTypes" >> _value >> _gearType);
 			
 			_total = 0;
@@ -163,16 +162,16 @@ if(random(100) < _buildingChance) then {
 					breakTo "ExitLoop";
 				};
 				case "magazines": {
-					_object addMagazineCargoGlobal [_mag,(floor(random 2)) + 1];
+					_object addMagazineCargoGlobal [_item,(floor(random 2)) + 1];
 				};
 				case "gear": {
-					_object addItemCargoGlobal [_mag,1];
+					_object addItemCargoGlobal [_item,1];
 				};
 				case "clothing": {
-					_object addItemCargoGlobal [_mag,1];
+					_object addItemCargoGlobal [_item,1];
 				};
 				case "backpacks": {
-					_object addBackpackCargoGlobal [_mag,1];
+					_object addBackpackCargoGlobal [_item,1];
 				};
 			};
 			{

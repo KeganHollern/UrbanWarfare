@@ -9,7 +9,6 @@
 
 {deleteVehicle _x;} forEach allDead;
 {deleteVehicle _x;} forEach ((getMarkerPos "BRMini_SafeZone") nearObjects ["WeaponHolder",400]);
-{deleteVehicle _x;} forEach LOOT_OBJECTS;
 {deleteVehicle _x;} forEach ([0,0,0] nearObjects 10);
 {
 	_x setDamage 0; 
