@@ -50,7 +50,7 @@ _roads = _pos nearRoads 150;
 {
 	_pos = getposatl (_roads select floor(random(count(_roads))));
 	_x setposatl _pos;
-} forEach playableUnits;
+} forEach allPlayers;
 
 //--- Countdown to start
 uiSleep 1;
