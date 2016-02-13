@@ -259,7 +259,7 @@ class CfgLoot {
 				{"arifle_Mk20_GL_F",2},
 				{"arifle_Mk20_GL_plain_F",2},
 				{"arifle_Mk20C_plain_F",2},
-				{"arifle_SDAR_F",3}
+				{"arifle_SDAR_F",1}
 			};
 			magazines[] = {
 				{"30Rnd_556x45_Stanag",1},
@@ -820,19 +820,19 @@ class CfgLoot {
 		lootChance = 70; //--- chance of loot position spawning a pile
 		spawnChance = 90;  //--- Chance of house spawning gear
 		typeChance[] = {65,30,5}; //--- high,medium,low loot chances
-		gearChance[] = {17,28,23,20,12}; //--- weapon,magazine,gear,clothing,backpack loot chances
+		gearChance[] = {15,28,25,20,12}; //--- weapon,magazine,gear,clothing,backpack loot chances
 	};
 	class Industrial {
 		lootChance = 70;
 		spawnChance = 90;
 		typeChance[] = {10,65,25};
-		gearChance[] = {17,28,23,20,12};	
+		gearChance[] = {15,28,25,20,12};	
 	};
 	class Residential {
 		lootChance = 70;
 		spawnChance = 90;
 		typeChance[] = {1,39,60};
-		gearChance[] = {17,28,23,20,12};	
+		gearChance[] = {15,28,25,20,12};	
 	};
 	//--- max # items per pile (these must total to be at least 3)
 	class Limits {

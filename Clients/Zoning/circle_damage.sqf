@@ -13,7 +13,7 @@ while{alive player} do {
 			_messageTime = time;
 			["YOU ARE OUTSIDE THE PLAY AREA!",0,0.7,5,0] spawn BIS_fnc_dynamicText;
 		} else {
-			if((time-10) > _messageTime) then {
+			if((time-6) > _messageTime) then {
 				_messageTime = time;
 				_damage = (damage player + (1/10));
 				if(_damage >= 1) then {

@@ -102,7 +102,7 @@ if(random(100) < _buildingChance) then {
 					_selectingLoot = false;
 				} else {
 					_count = _usedCount select _index;
-					if((_count+1) <= getNumber(missionConfigFile >> "CfgLoot" >> "Limits" >> ("max" + _gearType))) then {
+					if(_count < getNumber(missionConfigFile >> "CfgLoot" >> "Limits" >> ("max" + _gearType))) then {
 						_selectingLoot = false;
 						_usedCount set[_index,_count+1];
 					};
