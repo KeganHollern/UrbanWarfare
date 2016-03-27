@@ -8,6 +8,7 @@
 */
 call BRGH_fnc_findPlayarea;
 call BRGH_fnc_mapSetup; //--- update black zone
+call BRGH_fnc_startCamera; //--- start spectator live feed
 
 BRMini_GamesPlayed = BRMini_GamesPlayed + 1;
 
@@ -51,6 +52,9 @@ _roads = _pos nearRoads 150;
 	_pos = getposatl (_roads select floor(random(count(_roads))));
 	_x setposatl _pos;
 } forEach allPlayers;
+
+//--- Reset start region for dead players
+call BRGH_fnc_resetQuads;
 
 //--- Countdown to start
 uiSleep 1;

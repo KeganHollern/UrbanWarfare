@@ -26,6 +26,8 @@ if(BRMini_GamesPlayed >= BRMini_GamesPlayed_MaxGames) then {
 	BRMini_InGame = false;
 	BRMini_ServerOn = true; 
 	
+	call BRGH_fnc_resetQuads;
+	
 	DIAG_LOG "<RESET>: STARTING SERVER";
 	[] spawn BRGH_fnc_serverStart;
 };

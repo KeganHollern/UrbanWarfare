@@ -15,6 +15,14 @@ class cfgFunctions {
 			class serverConfig {
 				file = "Server\config.sqf";
 			};
+			//camera
+			class startCamera {
+				file = "Server\Camera\start.sqf";	
+			};
+			//vehicles
+			class resetQuads {
+				file = "Server\Vehicles\reset_quads.sqf";
+			};
 			//players
 			class playerConfig {
 				file = "Server\Players\player_config.sqf";
