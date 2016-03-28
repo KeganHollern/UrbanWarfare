@@ -12,7 +12,8 @@ if(!isNil "SPECUAV") then {
 	publicVariable "SPECUAV";
 };
 
-_groundPOS = ((getMarkerPos "BRMini_SafeZone") + [0]);//--- TODO
+_groundPOS = (getMarkerPos "BRMini_SafeZone");//--- TODO
+_groundPOS set[2,0];
 _uavPOS = _groundPOS vectorAdd [0,0,150];
 
 
