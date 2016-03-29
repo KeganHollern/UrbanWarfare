@@ -99,7 +99,6 @@ while{true} do {
 	
 	_cam cameraEffect ["terminate","back"];
 	camDestroy _cam;
-	deleteVehicle _uav;
 };
 
 
