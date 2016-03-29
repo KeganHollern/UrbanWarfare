@@ -78,11 +78,19 @@ uiSleep 10;
 				} else {
 					if(_killer == player) then {
 						_killData = BRMINI_ReportItems select 2;
-						_newData = [];
-						_newData pushBack (name _dead);
-						_newData  pushBack (player distance _dead);
-						_killData pushBack _newData;
-						BRMINI_ReportItems set[2,_killData];
+						_hasKill = false;
+						{
+							if((_x select 0) == (name _dead)) exitWith {
+								_hasKill = true;
+							};
+						} forEach _killData;
+						if(!_hasKill) then {
+							_newData = [];
+							_newData pushBack (name _dead);
+							_newData  pushBack (player distance _dead);
+							_killData pushBack _newData;
+							BRMINI_ReportItems set[2,_killData];
+						};
 					};
 				};
 				
