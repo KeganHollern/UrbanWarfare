@@ -31,7 +31,7 @@ call BRGH_fnc_startVON;
 		_pos = (getmarkerpos "Spawn_Area");
 		_x = (_pos select 0) + (random(20)-10);
 		_y = (_pos select 1) + (random(20)-10);
-		player setposatl [_x,_y,0];
+		(vehicle player) setposatl [_x,_y,0];
 	};
 };
 

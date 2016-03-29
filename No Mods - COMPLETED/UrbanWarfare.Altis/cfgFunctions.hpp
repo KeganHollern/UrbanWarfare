@@ -15,10 +15,6 @@ class cfgFunctions {
 			class serverConfig {
 				file = "Server\config.sqf";
 			};
-			//camera
-			class startCamera {
-				file = "Server\Camera\start.sqf";	
-			};
 			//vehicles
 			class resetQuads {
 				file = "Server\Vehicles\reset_quads.sqf";
@@ -107,6 +103,9 @@ class cfgFunctions {
 				file = "Clients\Map\clientFog.sqf";
 			};
 			//spectating
+			class StartSpectator {
+				file = "Clients\Spectating\start.sqf";
+			};
 			class spectate {
 				file = "Clients\Spectating\spectate.sqf";
 			};

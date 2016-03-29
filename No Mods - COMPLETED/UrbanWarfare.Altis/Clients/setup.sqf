@@ -26,6 +26,7 @@ setObjectViewDistance [1000,0];
 setViewDistance 1500;
 
 [] spawn BRGH_fnc_autoReload;
+[] spawn BRGH_fnc_StartSpectator;
 
 [] spawn {
 	while{true} do {
@@ -95,38 +96,4 @@ setViewDistance 1500;
 
 "BR_DT_PVAR" addPublicVariableEventHandler {
 	(_this select 1) spawn BIS_fnc_dynamicText;
-};
-
-"SPECUAV" addPublicVariableEventHandler {
-	_newOBJ = _this select 1;
-	if(isNull _newOBJ) then {
-		if(!isNil "SPECCAM") then {
-			if(!isNull SPECCAM) then {
-				SPECCAM cameraEffect ["terminate","back"];
-				camDestroy SPECCAM;
-			};
-		};
-		if(!isNil "CAMUPDATER") then {
-			removeMissionEventHandler ["Draw3D",CAMUPDATER];
-			CAMUPDATER = nil;
-		};
-	} else {
-		SPECCAM = "camera" camCreate [0,0,0];
-		SPECCAM cameraEffect ["Internal","back","specttt"];
-		SPECCAM attachTo [SPECUAV,[0,0,0],"PiP0_pos"];
-		SPECCAM camSetFov 0.1;
-		CAMUPDATER = addMissionEventHandler ["Draw3D", {
-			if(!isNull SPECUAV) then {
-				_dir = 
-					(SPECUAV selectionPosition "PiP0_pos") 
-						vectorFromTo 
-					(SPECUAV selectionPosition "PiP0_dir");
-				SPECCAM setVectorDirAndUp [
-					_dir, 
-					_dir vectorCrossProduct [-(_dir select 1), _dir select 0, 0]
-				];
-			};
-		}];
-	};
-
 };

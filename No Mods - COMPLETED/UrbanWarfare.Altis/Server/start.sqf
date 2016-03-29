@@ -8,7 +8,6 @@
 */
 call BRGH_fnc_findPlayarea;
 call BRGH_fnc_mapSetup; //--- update black zone
-call BRGH_fnc_startCamera; //--- start spectator live feed
 
 BRMini_GamesPlayed = BRMini_GamesPlayed + 1;
 
