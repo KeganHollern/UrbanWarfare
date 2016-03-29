@@ -49,6 +49,8 @@ _pos = (getMarkerPos "BRMini_SafeZone");
 _roads = _pos nearRoads 150;	
 {
 	_pos = getposatl (_roads select floor(random(count(_roads))));
+	moveOut _x;
+	waitUntil{_x == (vehicle _x)};
 	_x setposatl _pos;
 } forEach allPlayers;
 
