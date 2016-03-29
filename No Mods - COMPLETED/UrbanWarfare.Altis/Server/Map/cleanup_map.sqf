@@ -9,7 +9,6 @@
 
 {deleteVehicle _x;} forEach allDead;
 {deleteVehicle _x;} forEach ((getMarkerPos "BRMini_SafeZone") nearObjects ["WeaponHolder",400]);
-//--- Why is this here?      {deleteVehicle _x;} forEach ([0,0,0] nearObjects 10);
 {
 	_x setDamage 0; 
 	_config = configFile >> "CfgVehicles" >> (typeof _x);

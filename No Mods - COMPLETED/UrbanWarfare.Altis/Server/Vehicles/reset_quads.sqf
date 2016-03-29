@@ -28,6 +28,8 @@ _directions = [
 	221.293
 ];
 {
+	_x setDamage 0;
+	_x allowDamage false;
 	_x setposatl (_positions select _forEachIndex);
 	_x setVectorUp (surfaceNormal (_positions select _forEachIndex));
 	_x setDir (_directions select _forEachIndex);

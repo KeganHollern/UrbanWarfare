@@ -10,6 +10,7 @@
 uiSleep 10;
 {
 	if((_x distance (getMarkerPos "BRMini_SafeZone")) < 1000) then {
+		//--- may double execute TODO: implement a double execute patch?
 		_x addMPEventHandler ["MPKilled",{
 			_dead = _this select 0;
 			_killer = _this select 1;
@@ -23,7 +24,6 @@ uiSleep 10;
 						_message = format["<t color='#B30000'>%1</t> HAS COMMITTED SUICIDE",toUpper name _dead];
 					};
 					if(!isNull _killer && isPlayer _killer && _killer != _dead) then {
-						diag_log "<DEATHMSGS>: Suicide?";
 						_message = format["<t color='#B30000'>%1</t> WAS KILLED BY <t color='#2EB82E'>%2</t>",toUpper name _dead,toUpper name _killer];
 					};
 					if(!isNull _killer && isPlayer _killer && _killer == _dead && (_dead getVariable ["circleKill",false])) then {
