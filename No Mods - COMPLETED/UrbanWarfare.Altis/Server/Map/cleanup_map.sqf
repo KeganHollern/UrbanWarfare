@@ -21,7 +21,7 @@
 			if(isClass _action) then {
 				_name = configName _action;
 				if(["OpenDoor",_name] call BIS_fnc_inString) then {
-					 [_x, format['Door_%1_rot',_doorNum], format['Door_Handle_%1_rot_1',_doorNum], format['Door_Handle_%1_rot_2',_doorNum]] execVM "\A3\Structures_F\scripts\Door_close.sqf";
+					 [_x, format['Door_%1_rot',_doorNum], format['Door_Handle_%1_rot_1',_doorNum], format['Door_Handle_%1_rot_2',_doorNum]] execVM "\A3\Structures_F\scripts\fn_DoorClose.sqf";
 					_doorNum = _doorNum + 1;
 				};
 			};
