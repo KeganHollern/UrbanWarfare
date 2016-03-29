@@ -11,6 +11,11 @@ BRMini_ZoneStarted = false;
 BRMini_InGame = false;
 BRMini_ServerOn = true;
 
+BRMini_QuadData = [];
+{
+	BRMini_QuadData pushBack [getposatl _x,getdir _x];
+} forEach (allMissionObjects "C_Quadbike_01_F");
+
 BRMini_Winners = [];
 BRMini_WinnerScores = [];
 
