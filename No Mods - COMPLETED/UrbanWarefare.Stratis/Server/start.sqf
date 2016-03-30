@@ -93,6 +93,27 @@ _numWinners = count(_winners);
 	if(alive _x && isplayer _x) then {
 		_name = name _x;
 		
+		//--- add a win to their profile
+		[{
+			_servers = profileNamespace getVariable ["UW_Servers",[]];
+			_index = _servers find serverName;
+			if(_index == -1) then {
+				_index = _servers pushBack serverName;
+				profileNamespace setVariable ["UW_Servers",_servers];
+			};
+			_wins = profileNamespace getVariable ["UW_Wins",[]];
+			_numWins = 0;
+			if(count(_wins) > _index) then {
+				_numWins = _wins select _index;
+			};
+			_numWins = _numWins + 1;
+			_wins set[_index,_numWins];
+			profileNamespace setVariable  ["UW_Wins",_wins];
+			saveProfileNamespace;
+			
+			UW_Wins = _numWins; //--- update their win counter in game
+		}] remoteExec ["BIS_fnc_SPAWN",_x];
+		
 		//--- find winner data index & increment their score
 		_index = BRMini_Winners find _name;
 		if(_index == -1) then {
@@ -118,7 +139,7 @@ _numWinners = count(_winners);
 		BR_DT_PVAR = ["CONGRATULATIONS!",0,0.45,10,0];
 		publicVariable "BR_DT_PVAR";
 		uiSleep 5;
-		BR_DT_PVAR = ["YOU ARE AN URBAN WARFARE WINNER!",0,0.45,10,0];
+		BR_DT_PVAR = [format["%1 IS AN URBAN WARFARE WINNER!",_name],0,0.45,10,0];
 		publicVariable "BR_DT_PVAR";
 		uiSleep 5;
 		

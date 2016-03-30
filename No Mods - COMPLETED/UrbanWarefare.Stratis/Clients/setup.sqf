@@ -16,6 +16,31 @@ call BRGH_fnc_createInGameGUI;
 
 call BRGH_fnc_clientWeather;
 
+_servers = profileNamespace getVariable ["UW_Servers",[]];
+_index = _servers find serverName;
+if(_index == -1) then {
+	_index = _servers pushBack serverName;
+	profileNamespace setVariable ["UW_Servers",_servers];
+};
+_wins = profileNamespace getVariable ["UW_Wins",[]];
+_numWins = 0;
+if(count(_wins) > _index) then {
+	_numWins = _wins select _index;
+};
+_wins set[_index,_numWins];
+profileNamespace setVariable  ["UW_Wins",_wins];
+saveProfileNamespace;
+
+UW_WINS = _numWins;
+[] spawn {
+	while{true} do {
+		player setVariable ["UW_WinRars",UW_WINS,true];
+		waitUntil{uiSleep 1; ((player getVariable ["UW_WinRars",-1]) != UW_Wins)}; 
+	};
+};
+
+
+
 //--- TODO: Fix AFK Timer [] spawn BRGH_fnc_afkTimer;
 
 enableRadio false;

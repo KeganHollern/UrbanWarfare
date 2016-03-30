@@ -120,6 +120,12 @@ class cfgFunctions {
 				file = "Clients\VON\end_von.sqf";
 			};
 			//GUI
+			class startTags {
+				file = "Clients\GUI\start_nametags.sqf";
+			};
+			class endTags {
+				file = "Clients\GUI\end_nametags.sqf";
+			};
 			class showReport {
 				file = "Clients\GUI\show_report.sqf";
 			};

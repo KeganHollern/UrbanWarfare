@@ -21,6 +21,7 @@ BRMINI_ReportItems = [
 
 diag_log "<START>: START VON";
 call BRGH_fnc_startVON;
+call BRGH_fnc_startTags;
 
 //--- Lock them to the start region
 [] spawn {
@@ -46,6 +47,7 @@ if(_count > 0) exitWith {
 	waitUntil {[] call BRGH_fnc_updateInGameGUI; ({alive _x && isplayer _x} count((getMarkerPos "BRMini_SafeZone") nearObjects ["Man",500])) == 0 || !(alive player)};
 	(findDisplay 46) displayRemoveEventHandler ["KeyDown",_keybinds];
 	call BRGH_fnc_endVON;
+	call BRGH_fnc_endTags;
 	call BRGH_fnc_endSpectate;
 	if !(alive player) exitWith {};
 	_body = player;
@@ -54,8 +56,11 @@ if(_count > 0) exitWith {
 };
 ["<t align='center' color='#FFFFFF'>WAITING FOR THE ROUND TO START</t>"] call BRGH_fnc_updateInGameGUI;
 waitUntil{BRMini_GameStarted};
+
 [""] call BRGH_fnc_updateInGameGUI; //--- clear header
 call BRGH_fnc_endVON;
+call BRGH_fnc_endTags;
+
 diag_log "<START>: VON STOPPED";
 
 diag_log "<START>: CLEANING BLUEZONE";

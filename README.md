@@ -53,6 +53,11 @@ License
 
 ChangeLog:
 ==========
+- 1.0.8
+	1. Added: Win tracking
+	2. Added: Start area name tags
+	3. Tweaked: Winner messages
+	
 - 1.0.7
 	1. Added: Stratis map support
 	2. Added: Spectator preview board
