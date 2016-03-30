@@ -21,7 +21,7 @@ As I continue to work hard on this project you can expect it tobe able to suppor
 
 - Any Map (ArmA or Modded)
 - Any Mod (Weapons, Vehicles, ACE, ect.)
-- Linux Players (1.42 client)
+- Linux Players
 - Linux Servers (all server extensions will have a linux counterpart)
 
 You can also expect me to release "leaderboard" web files to allow server owners the option
@@ -36,7 +36,7 @@ Fast Paced FPS. Close Quarters Combat. Urban Environment. Last Man Standing.
 Game Info:
 ==========
 
-- Location: Altis
+- Location: Altis & Stratis
 - Time: Random
 - Weather: Random + Realism (Synced)
 - Players: 30
@@ -53,6 +53,39 @@ License
 
 ChangeLog:
 ==========
+- 1.0.7
+	- Added: Stratis map support
+	- Added: Spectator preview board
+	- Added: Customizable server info board
+	- Added: Quadbikes to the start area
+	- Added: Ramp to the start area (stratis)
+	- Updated: Hit and Fired events
+	- Updated: Start lock to support vehicles
+	- Updated: Loot table to simplify it
+	- Updated: Game teleport to support vehicles
+	- Fixed: Kill data from occasionally double logging
+	- Fixed: Script error with CloseDoor.sqf function
+	
+- 1.0.6 "Stable"
+	1. Tweaked: Circle damage timer
+	
+- 1.0.5
+	1. Fixed: Casing error
+	
+- 1.0.4
+	1. Added: Logging
+	2. Added: Debug mode
+	3. Updated: Black zone system
+	4. Updated: Weather system to support new loot
+	5. Updated: Loot table compiler
+	6. Updated: Loot manager
+	
+- 1.0.3
+	1. Added: More comments
+	2. Updated: Winner announcement
+	3. Updated: Start announcement
+	4. Updated: SimpleFog for performance
+	
 - 1.0.2
 	1. Removed: Old loot spawning system
 	2. Removed: Loading screen
