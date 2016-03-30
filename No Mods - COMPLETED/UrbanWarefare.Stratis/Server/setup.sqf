@@ -11,6 +11,18 @@ BRMini_ZoneStarted = false;
 BRMini_InGame = false;
 BRMini_ServerOn = true;
 
+[] spawn {
+	while{true} do {
+		uiSleep 1;
+		{
+			if(count(units _x) == 0 && local _x) then {
+				deleteGroup _x;
+			};
+		} forEach allGroups;
+	};
+};
+
+
 BRMini_QuadData = [];
 {
 	BRMini_QuadData pushBack [getposatl _x,getdir _x];

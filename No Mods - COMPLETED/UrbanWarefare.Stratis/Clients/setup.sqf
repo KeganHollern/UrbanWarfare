@@ -57,9 +57,12 @@ setViewDistance 1500;
 	while{true} do {
 		setGroupIconsVisible [false,false];
 		waitUntil{count(units (group player)) > 1};
-		_grp = group player;
 		[player] joinSilent (creategroup (side player));
-		deletegroup _grp;
+		{
+			if(count(units _x) == 0 && local _x) then {
+				deleteGroup _x;
+			};
+		} forEach allGroups;
 	};
 };
 
