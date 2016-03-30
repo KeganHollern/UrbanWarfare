@@ -54,17 +54,17 @@ License
 ChangeLog:
 ==========
 - 1.0.7
-	- Added: Stratis map support
-	- Added: Spectator preview board
-	- Added: Customizable server info board
-	- Added: Quadbikes to the start area
-	- Added: Ramp to the start area (stratis)
-	- Updated: Hit and Fired events
-	- Updated: Start lock to support vehicles
-	- Updated: Loot table to simplify it
-	- Updated: Game teleport to support vehicles
-	- Fixed: Kill data from occasionally double logging
-	- Fixed: Script error with CloseDoor.sqf function
+	1. Added: Stratis map support
+	2. Added: Spectator preview board
+	3. Added: Customizable server info board
+	4. Added: Quadbikes to the start area
+	5. Added: Ramp to the start area (stratis)
+	6. Updated: Hit and Fired events
+	7. Updated: Start lock to support vehicles
+	8. Updated: Loot table to simplify it
+	9. Updated: Game teleport to support vehicles
+	10. Fixed: Kill data from occasionally double logging
+	11. Fixed: Script error with CloseDoor.sqf function
 	
 - 1.0.6 "Stable"
 	1. Tweaked: Circle damage timer
