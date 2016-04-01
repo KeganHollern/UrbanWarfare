@@ -8,9 +8,12 @@
 */
 
 {
-	_x setDamage 0;
-	_x allowDamage false;
-	_x setposatl ((BRMini_QuadData select _forEachIndex) select 0);
-	_x setVectorUp (surfaceNormal ((BRMini_QuadData select _forEachIndex) select 0));
-	_x setDir ((BRMini_QuadData select _forEachIndex) select 1);
+	deleteVehicle _x;
 } forEach (allMissionObjects "C_Quadbike_01_F");
+
+{
+	_quad = "C_Quadbike_01_F" createVehicle (_x select 0);
+	_quad setposatl (_x select 0);
+	_quad setDir (_x select 1);
+	_quad allowDamage false;
+} forEach BRMini_QuadData;
