@@ -54,6 +54,12 @@ while{true} do {
 			
 			_targetPOS = _groundPOS;
 			
+			if(getMarkerColor "Blue_Zone" != "") then {
+				
+				_targetPOS = getMarkerPos "Blue_Zone";
+				
+			};
+			
 			if(!isNull _lastShot) then {
 				if !(_lastShot getVariable ["BRFired",false]) then {
 					_lastShot = objNull;
