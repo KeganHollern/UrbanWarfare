@@ -8,8 +8,9 @@
 */
 BRMINI_BZoneObjects = [];
 //--- fix for black zone not drawing in first round
-"BR_DRAWBLACKZONE" addPublicVariableEventHandler {
-	_data = _this select 1;
+
+BRGH_fnc_updateBlackZone = {
+	params["_data"];
 	_old = BRMINI_BZoneObjects;
 	BRMINI_BZoneObjects = [];
 	{
@@ -29,6 +30,15 @@ BRMINI_BZoneObjects = [];
 		deleteVehicle _x;
 	} forEach _old;
 };
+
+[] spawn {
+	while{true} do {
+		waitUntil{uiSleep 1; !isNil "BR_DRAWBLACKZONE"};
+		[BR_DRAWBLACKZONE] call BRGH_fnc_updateBlackZone;
+		BR_DRAWBLACKZONE = nil;
+	};
+};
+
 
 onPreloadFinished {
 	onPreloadFinished {};
