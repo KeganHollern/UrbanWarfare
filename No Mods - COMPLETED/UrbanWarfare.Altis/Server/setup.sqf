@@ -12,6 +12,7 @@ BRMini_InGame = false;
 BRMini_ServerOn = true;
 
 [] spawn {
+	scriptName "Server_Group_Management";
 	while{true} do {
 		uiSleep 1;
 		{

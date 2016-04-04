@@ -33,6 +33,7 @@ saveProfileNamespace;
 
 UW_WINS = _numWins;
 [] spawn {
+	scriptName "Win_Variable_Updater";
 	while{true} do {
 		player setVariable ["UW_WinRars",UW_WINS,true];
 		waitUntil{uiSleep 1; ((player getVariable ["UW_WinRars",-1]) != UW_Wins)}; 
@@ -54,6 +55,7 @@ setViewDistance 1500;
 [] spawn BRGH_fnc_StartSpectator;
 
 [] spawn {
+	scriptName "Player_Grouping_Fix";
 	while{true} do {
 		setGroupIconsVisible [false,false];
 		waitUntil{count(units (group player)) > 1};

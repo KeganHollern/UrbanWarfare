@@ -112,13 +112,6 @@ class cfgFunctions {
 			class endSpectate {
 				file = "Clients\Spectating\kill_spectate.sqf";
 			};
-			//VON
-			class startVON {
-				file = "Clients\VON\start_von.sqf";
-			};
-			class endVON {
-				file = "Clients\VON\end_von.sqf";
-			};
 			//GUI
 			class startTags {
 				file = "Clients\GUI\start_nametags.sqf";

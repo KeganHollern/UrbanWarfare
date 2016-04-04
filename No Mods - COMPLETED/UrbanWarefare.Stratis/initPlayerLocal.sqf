@@ -32,6 +32,7 @@ BRGH_fnc_updateBlackZone = {
 };
 
 [] spawn {
+	scriptName "Black_Zone_Drawer";
 	while{true} do {
 		waitUntil{uiSleep 1; !isNil "BR_DRAWBLACKZONE"};
 		[BR_DRAWBLACKZONE] call BRGH_fnc_updateBlackZone;

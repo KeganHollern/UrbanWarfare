@@ -6,7 +6,7 @@
 	Parameters: n/a
 	Returns: n/a
 */
-
+scriptName "Server_Lightning_Loop";
 
 BR_ServerRainValue = [0,0];
 publicVariable "BR_ServerRainValue";
@@ -37,6 +37,7 @@ diag_log format["BR WEATHER force: %1", _startingWindForce];
 diag_log format["BR WEATHER gusts: %1", _startingWindGusts];
 
 [] spawn {
+	scriptName "Server_Weather_Sync";
 	while{true} do {
 		if(!BRMini_ServerOn) exitWith {};
 		uiSleep 5;
@@ -53,7 +54,7 @@ diag_log format["BR WEATHER: Handling Weather. Overcast: %1 Rain: %2",overcast,r
 while{true} do {
 	waitUntil{rain > 0.85 || !BRMini_ServerOn};
 	if(!BRMini_ServerOn) exitWith {};
-	_x = playableUnits select floor(random(count(playableUnits)));
+	_x = allPlayers select floor(random(count(allPlayers)));
 	_xC = random(1600)-800;
 	_yC = random(1600)-800;
 	_pos = getposatl _x;
