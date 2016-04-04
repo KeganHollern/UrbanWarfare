@@ -19,12 +19,12 @@ BRMINI_ReportItems = [
 	1  //--- Finish Place 7
 ];
 
-diag_log "<START>: START VON";
-call BRGH_fnc_startVON;
+diag_log "<START>: START TAGS";
 call BRGH_fnc_startTags;
 
 //--- Lock them to the start region
 [] spawn {
+	scriptName "Start_Region_Lock";
 	while{true} do {
 		waitUntil{BRMini_GameStarted || (player distance (getmarkerpos "Spawn_Area")) > (((getmarkersize "Spawn_Area") select 0)*20)};
 		if(BRMini_GameStarted) exitWith {}; 
@@ -46,7 +46,6 @@ if(_count > 0) exitWith {
 	_keybinds = (findDisplay 46) displayAddEventHandler ["KeyDown",{if((_this select 1) == 15) then {(getMarkerPos "BRMini_SafeZone") spawn fnc_BRCamera;};false}];
 	waitUntil {[] call BRGH_fnc_updateInGameGUI; ({alive _x && isplayer _x} count((getMarkerPos "BRMini_SafeZone") nearObjects ["Man",500])) == 0 || !(alive player)};
 	(findDisplay 46) displayRemoveEventHandler ["KeyDown",_keybinds];
-	call BRGH_fnc_endVON;
 	call BRGH_fnc_endTags;
 	call BRGH_fnc_endSpectate;
 	if !(alive player) exitWith {};
@@ -58,10 +57,9 @@ if(_count > 0) exitWith {
 waitUntil{BRMini_GameStarted};
 
 [""] call BRGH_fnc_updateInGameGUI; //--- clear header
-call BRGH_fnc_endVON;
 call BRGH_fnc_endTags;
 
-diag_log "<START>: VON STOPPED";
+diag_log "<START>: TAGS STOPPED";
 
 diag_log "<START>: CLEANING BLUEZONE";
 {

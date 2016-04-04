@@ -9,7 +9,7 @@
 
 //if(BRMini_GamesPlayed >= BRMini_GamesPlayed_MaxGames) then {
 //	DIAG_LOG "<RESET>: RESTATING MISSION";
-	["Won"] spawn BIS_fnc_endMissionServer; //--- seems to break
+//	["Won"] spawn BIS_fnc_endMissionServer; //--- seems to break
 //} else {
 	DIAG_LOG "<RESET>: CLEANING UP MAP";
 	call BRGH_fnc_mapCleanup; 
