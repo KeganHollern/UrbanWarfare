@@ -7,5 +7,8 @@
 	Returns: n/a
 */
 
-//--- Rounds played before mission restart
-BRMini_GamesPlayed_MaxGames = 10;
+//--- Key used for storing leaderboard data, change this to reset leaderboard data on your server
+Leaderboards_Key = "CHANGE ME TO SOMETHING RANDOM";
+
+//--- Minimum number of players to start a round
+BRMini_Min_Players = 2; 

@@ -20,9 +20,6 @@ class cfgFunctions {
 				file = "Server\Vehicles\reset_quads.sqf";
 			};
 			//players
-			class playerConfig {
-				file = "Server\Players\player_config.sqf";
-			};
 			class deathMessages {
 				file = "Server\Players\deathMessages.sqf";
 			};

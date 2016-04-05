@@ -6,28 +6,21 @@
 	Parameters: n/a
 	Returns: n/a
 */
+DIAG_LOG "<RESET>: CLEANING UP MAP";
 
-//if(BRMini_GamesPlayed >= BRMini_GamesPlayed_MaxGames) then {
-//	DIAG_LOG "<RESET>: RESTATING MISSION";
-//	["Won"] spawn BIS_fnc_endMissionServer; //--- seems to break
-//} else {
-	DIAG_LOG "<RESET>: CLEANING UP MAP";
-	call BRGH_fnc_mapCleanup; 
-	
-	DIAG_LOG "<RESET>: WAITING FOR THREADS";
-	if(typename _this == typename []) then {
-		{waitUntil{scriptDone _x};} forEach (_this select 0);
-		{waitUntil{completedFSM _x};} forEach (_this select 1);
-	};
-	
-	DIAG_LOG "<RESET>: RESETING VARIABLES";
-	BRMini_GameStarted = false;
-	BRMini_ZoneStarted = false; 
-	BRMini_InGame = false;
-	BRMini_ServerOn = true; 
-	
-	call BRGH_fnc_resetQuads;
-	
-	DIAG_LOG "<RESET>: STARTING SERVER";
-	[] spawn BRGH_fnc_serverStart;
-//};
+DIAG_LOG "<RESET>: WAITING FOR THREADS";
+if(typename _this == typename []) then {
+	{waitUntil{scriptDone _x};} forEach (_this select 0);
+	{waitUntil{completedFSM _x};} forEach (_this select 1);
+};
+
+DIAG_LOG "<RESET>: RESETING VARIABLES";
+BRMini_GameStarted = false;
+BRMini_ZoneStarted = false; 
+BRMini_InGame = false;
+BRMini_ServerOn = true; 
+
+call BRGH_fnc_resetQuads;
+
+DIAG_LOG "<RESET>: STARTING SERVER";
+[] spawn BRGH_fnc_serverStart;
