@@ -27,5 +27,4 @@ player removeAllEventHandlers "Respawn";
 player removeAllEventHandlers "Fired";
 player removeAllEventHandlers "Hit";
 
-call BRGH_fnc_endVON;
 [] spawn BRGH_fnc_clientStart; 

@@ -6,7 +6,7 @@
 	Parameters: n/a
 	Returns: n/a
 */
-
+scriptName "Death_Messages";
 uiSleep 10;
 {
 	if((_x distance (getMarkerPos "BRMini_SafeZone")) < 1000) then {

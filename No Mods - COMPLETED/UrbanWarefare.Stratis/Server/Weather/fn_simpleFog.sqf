@@ -6,6 +6,8 @@
 	Parameters: n/a
 	Returns: n/a
 */
+scriptName "Simple_Fog";
+
 _initialHeight = 80;
 _fog = (random br_maxFogStrength) max 0.005;
 _density = (random br_maxFogDensity) max 0.005;  

@@ -6,6 +6,7 @@
 	Parameters: n/a
 	Returns: n/a
 */
+scriptName "Wait_For_Players";
 _countPlayers = {
 	_count = 0;
 	{

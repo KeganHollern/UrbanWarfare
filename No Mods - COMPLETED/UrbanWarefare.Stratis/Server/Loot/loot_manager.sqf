@@ -3,7 +3,7 @@
 	Date: 1 Nov 2015	
 */
 diag_log "LOOT MANAGER: started";
-
+scriptName "Loot_Manager";
 while{true} do {
 	{
 		if(alive _x && (_x distance (getMarkerPos "BRMini_SafeZone")) < 1000) then {

@@ -7,7 +7,13 @@
 	Returns: n/a
 */
 
+scriptName "Spectator_Billboard_Updater";
+
 while{true} do {
+	//--- if pip is disabled then we need to wait until it is enabled to continue the script
+	if(!isPipEnabled) then {
+		waitUntil{uiSleep 1;isPipEnabled};
+	};
 	
 	_angle = random(360);
 	_x = sin(_angle) * 280;
@@ -34,7 +40,7 @@ while{true} do {
 	
 	_lastShot = objNull;
 	
-	while{(_groundPOS IsEqualTo (markerPos "BRMini_SafeZone"))} do {
+	while{(_groundPOS IsEqualTo (markerPos "BRMini_SafeZone")) && isPipEnabled} do {
 		
 		_hour = date select 3;
 		if(_hour < 7 || _hour > 17) then {

@@ -9,7 +9,7 @@
 _tempSize = 280;
 _nextZoneCenter = getMarkerPos "BRMini_SafeZone";
 
-_steps = floor ((2 * pi * _tempSize) / 15);
+_steps = floor ((2 * pi * _tempSize) / 10);
 _radStep = 360 / _steps;
 _data = [];
 for [{_j = 0}, {_j < 360}, {_j = _j + _radStep}] do {

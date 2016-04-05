@@ -6,6 +6,7 @@
 	Parameters: n/a
 	Returns: n/a
 */
+
 call BRGH_fnc_findPlayarea;
 call BRGH_fnc_mapSetup; //--- update black zone
 
