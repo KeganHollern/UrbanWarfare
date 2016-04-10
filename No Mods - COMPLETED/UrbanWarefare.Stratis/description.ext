@@ -30,4 +30,5 @@ class CfgUnitInsignia
 
 #include "cfgLoot.hpp"
 #include "cfgFunctions.hpp"
+#include "cfgMusic.hpp"
 #include "GUI\includes.hpp"

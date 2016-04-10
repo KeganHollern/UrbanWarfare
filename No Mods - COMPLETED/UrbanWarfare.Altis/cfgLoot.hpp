@@ -260,7 +260,6 @@ class CfgLoot {
 				{"30Rnd_65x39_caseless_mag",1},
 				{"30Rnd_65x39_caseless_mag_Tracer",1},
 				{"200Rnd_65x39_belt_Tracer_Green",1},
-				{"200Rnd_65x39_belt_Tracer_Red",1},
 				{"HandGrenade",1},
 				{"1Rnd_Smoke_Grenade_shell",1},
 				{"1Rnd_HE_Grenade_shell",1},

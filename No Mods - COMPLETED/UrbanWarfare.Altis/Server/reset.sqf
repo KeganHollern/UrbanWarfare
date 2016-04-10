@@ -7,6 +7,7 @@
 	Returns: n/a
 */
 DIAG_LOG "<RESET>: CLEANING UP MAP";
+call BRGH_fnc_mapCleanup;
 
 DIAG_LOG "<RESET>: WAITING FOR THREADS";
 if(typename _this == typename []) then {

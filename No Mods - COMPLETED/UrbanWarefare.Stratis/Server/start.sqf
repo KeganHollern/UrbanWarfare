@@ -55,6 +55,9 @@ _roads = _pos nearRoads 150;
 	_x setposatl _pos;
 } forEach allPlayers;
 
+//--- Force stand up
+"player switchMove 'amovpercmstpsnonwnondnon';" call BRMini_RE;
+
 //--- Reset start region for dead players
 call BRGH_fnc_resetQuads;
 

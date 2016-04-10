@@ -15,7 +15,7 @@ while{true} do {
 		waitUntil{uiSleep 1;isPipEnabled};
 	};
 	
-	_angle = random(360);
+	_angle = 30;//random(360);
 	_x = sin(_angle) * 280;
 	_y = cos(_angle) * 280;
 	

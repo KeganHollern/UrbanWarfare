@@ -68,6 +68,7 @@ diag_log "<START>: CLEANING BLUEZONE";
 BRMINI_ZoneObjects = [];
 
 waitUntil{(player distance (getMarkerPos "BRMini_SafeZone")) < 500};
+player setUnitRecoilCoefficient 2.4;
 uiSleep 3;
 BRMINI_ReportItems set [6,time];
 player setVariable ["circleKill",false,true];

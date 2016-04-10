@@ -44,6 +44,11 @@ UW_WINS = _numWins;
 
 //--- TODO: Fix AFK Timer [] spawn BRGH_fnc_afkTimer;
 
+//--- Setup bird effect
+0 fadeMusic 0.5;
+playMusic "BirdsEffect";
+addMusicEventHandler["MusicStop",{playMusic "BirdsEffect";}];
+
 enableRadio false;
 enableSentences false;
 showSubtitles false;
@@ -65,6 +70,14 @@ setViewDistance 1500;
 				deleteGroup _x;
 			};
 		} forEach allGroups;
+	};
+};
+
+[] spawn {
+	scriptName "Limited_Third_Person";
+	while{true} do {
+		waitUntil{vehicle player == player && (currentWeapon player) != "" && cameraView == "External" && cameraon == player};
+		player switchCamera "Internal";
 	};
 };
 
