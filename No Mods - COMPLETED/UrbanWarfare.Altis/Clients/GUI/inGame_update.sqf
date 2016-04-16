@@ -9,7 +9,7 @@
 if(count(_this) == 0) then {
 	_getCount = {
 		private["_count"];
-		_count = ({alive _x && isplayer _x} count((getMarkerPos "BRMini_SafeZone") nearObjects ["Man",500]));
+		_count = ({alive _x && isplayer _x} count((getMarkerPos "UrbanW_SafeZone") nearObjects ["Man",500]));
 		_count;
 	};
 	_count = call _getCount;

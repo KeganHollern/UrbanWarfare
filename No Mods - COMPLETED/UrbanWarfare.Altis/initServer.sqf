@@ -6,5 +6,5 @@
 	Parameters: n/a
 	Returns: n/a
 */
-call BRGH_fnc_serverSetup;
-call BRGH_fnc_serverStart;
+call UW_fnc_serverSetup;
+call UW_fnc_serverStart;

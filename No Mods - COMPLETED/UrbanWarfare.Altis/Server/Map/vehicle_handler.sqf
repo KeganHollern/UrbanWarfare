@@ -1,6 +1,6 @@
 /*
 	File: vehicle_handler.sqf
-	Description: Vehicle handler for BRGH -- This will delete all vehicles and log vehicles created by clients
+	Description: Vehicle handler for UW -- This will delete all vehicles and log vehicles created by clients
 	Created By: Lystic
 	Date: 10/20/2014
 	Parameters: n/a

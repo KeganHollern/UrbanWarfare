@@ -1,8 +1,8 @@
 _outside = false;
 _messageTime = -1;
 while{alive player} do {
-	_position = (getMarkerPos "BRMini_SafeZone");
-	_size = (getMarkerSize "BRMini_SafeZone") select 0;
+	_position = (getMarkerPos "UrbanW_SafeZone");
+	_size = (getMarkerSize "UrbanW_SafeZone") select 0;
 	if("Blue_Zone" in AllMapMarkers) then {
 		_position = (getMarkerPos "Blue_Zone");
 		_size = (getMarkerSize "Blue_Zone") select 0;

@@ -1,6 +1,6 @@
 /*
 	File: map_simulation.sqf
-	Description: Disable damage and simulation for all objects outside of the game area in BRGH
+	Description: Disable damage and simulation for all objects outside of the game area in UW
 	Created By: Lystic
 	Date: 10/20/2014
 	Parameters: n/a
@@ -13,7 +13,7 @@
 	if(_startTime == 0) then {_startTime = serverTime;_isServerTime = true;};
 	_objects = [0,0,0] nearObjects 1000000;
 	{
-		if(_x distance (getMarkerPos 'BRMini_SafeZone') > 400) then {
+		if(_x distance (getMarkerPos 'UrbanW_SafeZone') > 400) then {
 			if(_x isKindOf 'House') then {
 				_x enableSimulationGlobal false;
 				_x allowDamage false;

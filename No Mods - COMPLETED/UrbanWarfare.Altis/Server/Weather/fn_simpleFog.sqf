@@ -1,6 +1,6 @@
 /*
 	File: fn_simpleFog.sqf
-	Description: Realistic Fog Simulation for BRGH
+	Description: Realistic Fog Simulation for UW
 	Created By: PlayerUnknown & Lystic
 	Date: 10/20/2014
 	Parameters: n/a
@@ -9,8 +9,8 @@
 scriptName "Simple_Fog";
 
 _initialHeight = 80;
-_fog = (random br_maxFogStrength) max 0.005;
-_density = (random br_maxFogDensity) max 0.005;  
+_fog = (random UR_maxFogStrength) max 0.005;
+_density = (random UR_maxFogDensity) max 0.005;  
 
 _minDelay = 60;
 _maxDelay = 120;
@@ -31,22 +31,22 @@ diag_log format["BR ROLLING FOG: density: %1", _density];
 
 
 
-BR_SF_PVAR = [_fog,_density,_initialHeight,0];
-publicvariable "BR_SF_PVAR";
+UR_SF_PVAR = [_fog,_density,_initialHeight,0];
+publicvariable "UR_SF_PVAR";
 
 _currentHeight = _initialHeight;
 
 while{true} do {
-	if(!BRMini_ServerOn) exitWith {};
+	if(!UrbanW_ServerOn) exitWith {};
 	_delay = _minDelay;
 	_rdelay = floor (random(_maxDelay-_minDelay));        
 	_timeToChange = serverTime + _delay + _rdelay;
 	while{serverTime < _timeToChange} do {
 		uiSleep 1;
-		if(!BRMini_ServerOn) exitWith {};
+		if(!UrbanW_ServerOn) exitWith {};
 	};
 	
-	if(!BRMini_ServerOn) exitWith {};
+	if(!UrbanW_ServerOn) exitWith {};
 	
 	_change = _minChange + floor(random(_maxChange-_minChange));
 	_dir = if(floor(random(2)) == 1) then {1} else {-1};

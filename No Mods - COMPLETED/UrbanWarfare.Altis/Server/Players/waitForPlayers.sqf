@@ -1,6 +1,6 @@
 /*
 	File: waitForPlayers.sqf
-	Description: Player connection delay for BRGH
+	Description: Player connection delay for UW
 	Created By: Lystic
 	Date: 10/20/2014
 	Parameters: n/a
@@ -17,11 +17,11 @@ _countPlayers = {
 
 while{true} do {
 	_players = call _countPlayers;
-	if(_players >= BRMini_Min_Players) exitWith {};
+	if(_players >= UrbanW_Min_Players) exitWith {};
 	while{true} do {
-		if(_players >= BRMini_Min_Players) exitWith {};
-		BR_DT_PVAR = [format[(localize "str_BRGH_waitingFor") + " %1 " + (localize "str_BRGH_morePlayers") + "!",BRMini_Min_Players - _players],0,0.45,5,0];
-		publicVariable "BR_DT_PVAR";
+		if(_players >= UrbanW_Min_Players) exitWith {};
+		UR_DT_PVAR = [format[(localize "str_UW_waitingFor") + " %1 " + (localize "str_UW_morePlayers") + "!",UrbanW_Min_Players - _players],0,0.45,5,0];
+		publicVariable "UR_DT_PVAR";
 		_time = time + 30;
 		waitUntil{_players != (call _countPlayers) || time >= _time};
 		_players = call _countPlayers;

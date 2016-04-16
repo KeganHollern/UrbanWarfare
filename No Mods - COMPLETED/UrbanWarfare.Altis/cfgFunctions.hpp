@@ -1,6 +1,6 @@
 
 class cfgFunctions {
-	class BRGH {
+	class UW {
 		class Server {
 			//Root Server
 			class serverStart {

@@ -2,9 +2,9 @@
 
 
 //Configurations
-BR_CamEnableThermal = true; //allow the use of thermal mode
-BR_CamThermalModes = [0,1]; //thermal visions to toggle between (listed on wiki)
-BR_CamEnableNightVision = true; //allow the use of nightvision
+UR_CamEnableThermal = true; //allow the use of thermal mode
+UR_CamThermalModes = [0,1]; //thermal visions to toggle between (listed on wiki)
+UR_CamEnableNightVision = true; //allow the use of nightvision
 //End Configuration
 
 if (!isNil "BIS_DEBUG_CAM") exitwith {};
@@ -17,7 +17,7 @@ if (isnil "BIS_DEBUG_CAM_ISFLIR") then {
 {player reveal [_x,4];} foreach allunits;
 
 BIS_DEBUG_CAM_MAP = false;
-BR_MAPDRAW = -1;
+UR_MAPDRAW = -1;
 BIS_DEBUG_CAM_VISION = 0;
 BIS_DEBUG_CAM_FOCUS = 0;
 BIS_DEBUG_CAM_COLOR = ppEffectCreate ["colorCorrections", 1600];
@@ -30,13 +30,13 @@ if (isnil "BIS_DEBUG_CAM_PPEFFECTS") then {
 	];
 };
 
-br_fnc_spectator = {
+UR_fnc_spectator = {
 	//By lystic & lazyink & infistar
 	_show = _this select 0;
 	_doWork = _this select 1;
 		
 	player addWeapon "ItemGPS";
-	br_fnc_MapIcons = {
+	UR_fnc_MapIcons = {
 
 		disableSerialization;
 		_map = (findDisplay 12) displayCtrl 51;
@@ -46,7 +46,7 @@ br_fnc_spectator = {
 			
 			fnc_MapIcons_run = true;
 			
-			_map ctrlSetEventHandler ["Draw", "_this call br_fnc_mapIconsDraw;"];
+			_map ctrlSetEventHandler ["Draw", "_this call UR_fnc_mapIconsDraw;"];
 
 		} 
 		else 
@@ -54,7 +54,7 @@ br_fnc_spectator = {
 			fnc_MapIcons_run = nil;
 			_map ctrlSetEventHandler ["Draw", ""];
 		};
-		br_fnc_mapIconsDraw = {
+		UR_fnc_mapIconsDraw = {
 			private["_ctrl"];
 			_ctrl =  _this select 0;
 			_iscale = (1 - ctrlMapScale _ctrl) max .2;
@@ -95,9 +95,9 @@ br_fnc_spectator = {
 			} forEach _allvehicles;
 		};
 	};
-	br_esp_toggle = _doWork;
-	if(br_esp_toggle) then {
-			call br_fnc_MapIcons;
+	UR_esp_toggle = _doWork;
+	if(UR_esp_toggle) then {
+			call UR_fnc_MapIcons;
 			oneachframe {
 				disableSerialization;
 				LayerID = 2732;
@@ -106,8 +106,8 @@ br_fnc_spectator = {
 					LayerID cutText ["","PLAIN"]; //clear the layer
 					if(alive _x && (str(side _x) != "CIV")) then {
 
-						br_fireTrigger = _x getVariable ["BRFired",false];
-						br_inCombat = _x getVariable ["BRHit",false];
+						UR_fireTrigger = _x getVariable ["BRFired",false];
+						UR_inCombat = _x getVariable ["BRHit",false];
 
 						LayerID cutRsc ["rscDynamicText", "PLAIN"];
 						_ctrl = ((uiNamespace getvariable "BIS_dynamicText") displayctrl 9999);
@@ -215,7 +215,7 @@ br_fnc_spectator = {
 							_Tsize = 0.35;
 
 							//draw bounding box
-							if (!br_fireTrigger && !br_inCombat) then {
+							if (!UR_fireTrigger && !UR_inCombat) then {
 								drawLine3D[_2,_1,[1,1,1,0.8]];
 								drawLine3D[_4,_3,[1,1,1,0.8]];
 								drawLine3D[_6,_5,[1,1,1,0.8]];
@@ -224,7 +224,7 @@ br_fnc_spectator = {
 								drawLine3D[_12,_11,[1,1,1,0.8]];
 								drawLine3D[_14,_13,[1,1,1,0.8]];
 								_text = format ["<t size='%3'font='EtelkaMonospacePro'color='#fafafa'>%1</t><br /><t size='%3'font='EtelkaMonospacePro'color='#dddddd'>%2 M : %4 HP</t><br />",name _x,round _dist,_Tsize,_HP];
-								if(BR_SpectatorMode == 1) then {
+								if(UR_SpectatorMode == 1) then {
 									_text = format["%8<t size='%1'font='EtelkaMonospacePro'color='#d5d5d5'>%2 [%3-%4]</t><br /><t size='%1'font='EtelkaMonospacePro'color='#d5d5d5'>%5 [%6-%7]</t><br />",_Tsize,_pName,_primaryWeaponCurrentAmmo,_primaryWeaponMagCount,_sName,_handgunWeaponCurrentAmmo,_handgunWeaponMagCount,_text];
 									hintSilent parseText _text;
 								};
@@ -233,7 +233,7 @@ br_fnc_spectator = {
 								_ctrl ctrlSetPosition [(_pos2D select 0) - _screenDiff, (_pos2D select 1), safezoneW, safezoneH];
 								_ctrl ctrlCommit 0;
 							};
-							if (br_inCombat) then {
+							if (UR_inCombat) then {
 								drawLine3D[_2,_1,[1,0.35,0.15,0.8]];
 								drawLine3D[_4,_3,[1,0.35,0.15,0.8]];
 								drawLine3D[_6,_5,[1,0.35,0.15,0.8]];
@@ -242,7 +242,7 @@ br_fnc_spectator = {
 								drawLine3D[_12,_11,[1,0.35,0.15,0.8]];
 								drawLine3D[_14,_13,[1,0.35,0.15,0.8]];
 								_text = format ["<t size='%3'font='EtelkaMonospacePro'color='#d77f27'>%1</t><br /><t size='%3'font='EtelkaMonospacePro'color='#d77f27'>%2 M : %4 HP</t><br />",name _x,round _dist,_Tsize,_HP];
-								if(BR_SpectatorMode == 1) then {
+								if(UR_SpectatorMode == 1) then {
 									_text = format["%8<t size='%1'font='EtelkaMonospacePro'color='#d77f27'>%2 [%3-%4]</t><br /><t size='%1'font='EtelkaMonospacePro'color='#d77f27'>%5 [%6-%7]</t><br />",_Tsize,_pName,_primaryWeaponCurrentAmmo,_primaryWeaponMagCount,_sName,_handgunWeaponCurrentAmmo,_handgunWeaponMagCount,_text];
 									hintSilent parseText _text;
 								};
@@ -251,7 +251,7 @@ br_fnc_spectator = {
 								_ctrl ctrlSetPosition [(_pos2D select 0) - _screenDiff, (_pos2D select 1), safezoneW, safezoneH];
 								_ctrl ctrlCommit 0;
 							};
-							if (br_fireTrigger) then {
+							if (UR_fireTrigger) then {
 								drawLine3D[_2,_1,[1,0,0,0.8]];
 								drawLine3D[_4,_3,[1,0,0,0.8]];
 								drawLine3D[_6,_5,[1,0,0,0.8]];
@@ -260,7 +260,7 @@ br_fnc_spectator = {
 								drawLine3D[_12,_11,[1,0,0,0.8]];
 								drawLine3D[_14,_13,[1,0,0,0.8]];
 								_text = format ["<t size='%3'font='EtelkaMonospacePro'color='#ff0000'>%1</t><br /><t size='%3'font='EtelkaMonospacePro'color='#ff0000'>%2 M : %4 HP</t><br />",name _x,round _dist,_Tsize,_HP];
-								if(BR_SpectatorMode == 1) then {
+								if(UR_SpectatorMode == 1) then {
 									_text = format["%8<t size='%1'font='EtelkaMonospacePro'color='#ff0000'>%2 [%3-%4]</t><br /><t size='%1'font='EtelkaMonospacePro'color='#ff0000'>%5 [%6-%7]</t><br />",_Tsize,_pName,_primaryWeaponCurrentAmmo,_primaryWeaponMagCount,_sName,_handgunWeaponCurrentAmmo,_handgunWeaponMagCount,_text];
 									hintSilent parseText _text;
 								};
@@ -332,8 +332,8 @@ if(typename _this == typename []) then {
 
 //--- For auto follow fire.
 
-br_toggleFollowAction = false;
-br_moveCam = false;
+UR_toggleFollowAction = false;
+UR_moveCam = false;
 
 //--- Marker
 BIS_DEBUG_CAM_MARKER = createmarkerlocal ["BIS_DEBUG_CAM_MARKER",_ppos];
@@ -388,35 +388,35 @@ _keyDown = (finddisplay 46) displayaddeventhandler ["keydown","
 	};
 	
 "];
-BR_CamMode = 0;
-BR_SpectatorMode = 2;
-BR_CamTarget = objnull;
-BR_ThermalMode = -1;
-BR_CamNightVision = false;
-if(isNil "br_cam_runonce") then {
+UR_CamMode = 0;
+UR_SpectatorMode = 2;
+UR_CamTarget = objnull;
+UR_ThermalMode = -1;
+UR_CamNightVision = false;
+if(isNil "UR_cam_runonce") then {
 	["Player Lock For Spectator (Stops Player Movement)"] spawn {
 		waituntil{alive player};
 		_pos = getpos player;
 		_dir = getdir player;
 		while{true} do {
-			waitUntil{!isNull BR_CamTarget};
+			waitUntil{!isNull UR_CamTarget};
 			player setDir _dir;
 			player setPos _pos;
 		};
 	};
 };
-BRGH_Spectate_Keydown = (findDisplay 46) displayaddeventhandler ["keydown","
+UW_Spectate_Keydown = (findDisplay 46) displayaddeventhandler ["keydown","
 	_key = _this select 1;
 	switch(_key) do {
 		case 46: {
-			if(BR_CamEnableThermal) then {
-				if(BR_ThermalMode == (count(BR_CamThermalModes)-1)) then {
-					BR_ThermalMode = -1;
+			if(UR_CamEnableThermal) then {
+				if(UR_ThermalMode == (count(UR_CamThermalModes)-1)) then {
+					UR_ThermalMode = -1;
 				} else {
-					BR_ThermalMode = BR_ThermalMode + 1;
+					UR_ThermalMode = UR_ThermalMode + 1;
 				};
-				if(BR_ThermalMode != -1) then {
-					true setCamUseTi (BR_CamThermalModes select BR_ThermalMode);
+				if(UR_ThermalMode != -1) then {
+					true setCamUseTi (UR_CamThermalModes select UR_ThermalMode);
 				} else {
 					false setCamUseTi 0;
 				};
@@ -424,22 +424,22 @@ BRGH_Spectate_Keydown = (findDisplay 46) displayaddeventhandler ["keydown","
 			true;
 		};
 		case 49: {
-			if(BR_CamEnableNightVision) then {
-				BR_CamNightVision = !BR_CamNightVision;
-				camUseNVG BR_CamNightVision;
+			if(UR_CamEnableNightVision) then {
+				UR_CamNightVision = !UR_CamNightVision;
+				camUseNVG UR_CamNightVision;
 			};
 		};
 		case 48: {
-			if(BR_SpectatorMode == 2) then {
-				BR_SpectatorMode = 0;
-				[BR_SpectatorMode,true] call br_fnc_spectator;
+			if(UR_SpectatorMode == 2) then {
+				UR_SpectatorMode = 0;
+				[UR_SpectatorMode,true] call UR_fnc_spectator;
 			} else {
-				if(BR_SpectatorMode == 0) then {
-					BR_SpectatorMode = 1;
-					[BR_SpectatorMode,true] call br_fnc_spectator;
+				if(UR_SpectatorMode == 0) then {
+					UR_SpectatorMode = 1;
+					[UR_SpectatorMode,true] call UR_fnc_spectator;
 				} else {
-					BR_SpectatorMode = 2;
-					[BR_SpectatorMode,false] call br_fnc_spectator;
+					UR_SpectatorMode = 2;
+					[UR_SpectatorMode,false] call UR_fnc_spectator;
 				};
 			};
 				
@@ -451,17 +451,17 @@ BRGH_Spectate_Keydown = (findDisplay 46) displayaddeventhandler ["keydown","
 				if(alive _x && side _x != civilian) then {_units set [count(_units),_x];};
 			} forEach playableUnits;
 
-			if(!isNull BR_CamTarget) then {
-				_index = _units find BR_CamTarget;
+			if(!isNull UR_CamTarget) then {
+				_index = _units find UR_CamTarget;
 				if(_index != -1) then {
 					if(_index <= 0) then {_index == (count(_units)-1);} else {_index = _index - 1;};
 					_unit = _units select _index;
 					if(!isNull _unit) then {
-						BR_CamTarget = _unit;
-						if(BR_CamMode == 1) then {
-							BR_CamTarget switchCamera 'EXTERNAL';
+						UR_CamTarget = _unit;
+						if(UR_CamMode == 1) then {
+							UR_CamTarget switchCamera 'EXTERNAL';
 						} else {
-							BR_CamTarget switchCamera 'INTERNAL';
+							UR_CamTarget switchCamera 'INTERNAL';
 						};
 					};
 				};
@@ -473,24 +473,24 @@ BRGH_Spectate_Keydown = (findDisplay 46) displayaddeventhandler ["keydown","
 				if(alive _x && side _x != civilian) then {_units set [count(_units),_x];};
 			} forEach playableUnits;
 
-			if(!isNull BR_CamTarget) then {
-				_index = playableUnits find BR_CamTarget;
+			if(!isNull UR_CamTarget) then {
+				_index = playableUnits find UR_CamTarget;
 				if(_index != -1) then {
 					if(_index >= (count(_units)-1)) then {_index == 0;} else {_index = _index + 1;};
 					_unit = _units select _index;
 					if(!isNull _unit) then {
-						BR_CamTarget = _unit;
-						if(BR_CamMode == 1) then {
-							BR_CamTarget switchCamera 'EXTERNAL';
+						UR_CamTarget = _unit;
+						if(UR_CamMode == 1) then {
+							UR_CamTarget switchCamera 'EXTERNAL';
 						} else {
-							BR_CamTarget switchCamera 'INTERNAL';
+							UR_CamTarget switchCamera 'INTERNAL';
 						};
 					};
 				};
 			};
 		};
 		case 47: {
-			if(isNull BR_CamTarget) then {
+			if(isNull UR_CamTarget) then {
 				_cursorTarget = screenToWorld[0.5,0.5];
 
 				_object = objnull;
@@ -500,12 +500,12 @@ BRGH_Spectate_Keydown = (findDisplay 46) displayaddeventhandler ["keydown","
 
 				if(!isNull _object) then {
 					BIS_DEBUG_CAM = objnull;
-					BR_CamTarget = _object;
-					BR_CamTarget switchCamera 'INTERNAL';
+					UR_CamTarget = _object;
+					UR_CamTarget switchCamera 'INTERNAL';
 				};
 			} else {
-				BR_CamTarget call fnc_BRCamera;
-				BR_CamTarget = objnull;
+				UR_CamTarget call fnc_BRCamera;
+				UR_CamTarget = objnull;
 			};
 			true;
 		};
@@ -570,10 +570,10 @@ _map_mousebuttonclick = ((finddisplay 12) displayctrl 51) ctrladdeventhandler ["
 	BIS_DEBUG_CAM_LASTPOS = _lastpos;
 	
 	fnc_MapIcons_run = true;
-	call br_fnc_MapIcons;
+	call UR_fnc_MapIcons;
 	
 	ppeffectdestroy BIS_DEBUG_CAM_COLOR;
-	(finddisplay 46) displayremoveeventhandler ["keydown",BRGH_Spectate_Keydown];
+	(finddisplay 46) displayremoveeventhandler ["keydown",UW_Spectate_Keydown];
 	(finddisplay 46) displayremoveeventhandler ["keydown",_keyDown];
 	(finddisplay 46) displayremoveeventhandler ["mousezchanged",_mousezchanged];
 	((finddisplay 12) displayctrl 51) ctrlremoveeventhandler ["mousebuttonclick",_map_mousebuttonclick];

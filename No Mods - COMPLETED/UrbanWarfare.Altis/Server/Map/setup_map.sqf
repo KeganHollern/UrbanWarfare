@@ -1,13 +1,13 @@
 /*
 	File: setup_map.sqf
-	Description: Map Setup for BRGH
+	Description: Map Setup for UW
 	Created By: Lystic
 	Date: 10/20/2014
 	Parameters: n/a
 	Returns: n/a
 */
 _tempSize = 280;
-_nextZoneCenter = getMarkerPos "BRMini_SafeZone";
+_nextZoneCenter = getMarkerPos "UrbanW_SafeZone";
 
 _steps = floor ((2 * pi * _tempSize) / 10);
 _radStep = 360 / _steps;
@@ -18,5 +18,5 @@ for [{_j = 0}, {_j < 360}, {_j = _j + _radStep}] do {
 	_data set[count(_data),["UserTexture10m_F",_pos2,_j,"#(argb,8,8,3)color(0,0,0,0.6)"]];
 	_data set[count(_data),["UserTexture10m_F",_pos2,(_j + 180),"#(argb,8,8,3)color(0,0,0,0.6)"]];
 };
-BR_DRAWBLACKZONE = _data;
-publicVariable "BR_DRAWBLACKZONE";
+UR_DRAWBLACKZONE = _data;
+publicVariable "UR_DRAWBLACKZONE";

@@ -1,6 +1,6 @@
 /*
 	File: clientFog.sqf
-	Description: Realistic Fog Simulation for BRGH
+	Description: Realistic Fog Simulation for UW
 	Created By: Lystic
 	Date: 10/20/2014
 	Parameters: n/a

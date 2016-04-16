@@ -7,7 +7,7 @@
 	Returns: n/a
 */
 
-call BRGH_fnc_playerEvents;
+call UW_fnc_playerEvents;
 
 removeAllContainers player;
 removeAllWeapons player;
@@ -32,7 +32,7 @@ if !((getplayeruid player) in _adminUids) then {
 	player addUniform "U_B_CombatUniform_mcam";
 	if((getplayeruid player) in _vips) then {
 		player addHeadgear "H_Hat_tan";
-		fnc_BRCamera = BRGH_fnc_spectate;
+		fnc_BRCamera = UW_fnc_spectate;
 	} else {
 		fnc_BRCamera = {};
 	};	
@@ -40,8 +40,8 @@ if !((getplayeruid player) in _adminUids) then {
 } else {
 	player addUniform "U_B_CombatUniform_mcam_tshirt";
 	player addHeadgear "H_Hat_tan";
-	fnc_BRCamera = BRGH_fnc_spectate;
-	[player,"brghID"] call BIS_fnc_setUnitInsignia;
+	fnc_BRCamera = UW_fnc_spectate;
+	[player,"UWID"] call BIS_fnc_setUnitInsignia;
 };
 
 diag_log "<PSETUP>: PLAYER SETUP COMPLETE";

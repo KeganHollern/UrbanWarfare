@@ -1,15 +1,15 @@
 /*
 	File: setup.sqf
-	Description: Server one-time setup for BRGH
-	Created By: PlayerUnknown & Lystic
+	Description: Server one-time setup for UW
+	Created By: Lystic
 	Date: 10/20/2014
 	Parameters: n/a
 	Returns: n/a
 */
 
-BRMini_ZoneStarted = false;
-BRMini_InGame = false;
-BRMini_ServerOn = true;
+UrbanW_ZoneStarted = false;
+UrbanW_InGame = false;
+UrbanW_ServerOn = true;
 
 [] spawn {
 	scriptName "Server_Group_Management";
@@ -24,23 +24,23 @@ BRMini_ServerOn = true;
 };
 
 
-BRMini_QuadData = [];
+UrbanW_QuadData = [];
 {
-	BRMini_QuadData pushBack [getposatl _x,getdir _x];
+	UrbanW_QuadData pushBack [getposatl _x,getdir _x];
 } forEach (allMissionObjects "C_Quadbike_01_F");
 
-BRMini_Winners = [];
-BRMini_WinnerScores = [];
+UrbanW_Winners = [];
+UrbanW_WinnerScores = [];
 
-BRMini_GamesPlayed = 0;
-br_maxFogHeight = 200;
-br_maxFogDensity = 0.04;
-br_maxFogStrength = 0.1;
+UrbanW_GamesPlayed = 0;
+UR_maxFogHeight = 200;
+UR_maxFogDensity = 0.04;
+UR_maxFogStrength = 0.1;
 
-call BRGH_fnc_serverConfig;
-//--- TODO: Fix Vehicle Handler Check call BRGH_fnc_vehicleHandler;
+call UW_fnc_serverConfig;
+//--- TODO: Fix Vehicle Handler Check call UW_fnc_vehicleHandler;
 
-BRMini_RE = compileFinal '
+UrbanW_RE = compileFinal '
 	_script = if(typename _this == "STRING") then {compile _this} else {_this};
 	_agent = createAgent ["LOGIC",[0,0,0],[],0,"NONE"];
 	_agent addMPEventHandler ["MPKilled",_script];

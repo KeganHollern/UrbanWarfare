@@ -8,7 +8,7 @@
 */
 
 {deleteVehicle _x;} forEach allDead;
-{deleteVehicle _x;} forEach ((getMarkerPos "BRMini_SafeZone") nearObjects ["WeaponHolder",400]);
+{deleteVehicle _x;} forEach ((getMarkerPos "UrbanW_SafeZone") nearObjects ["WeaponHolder",400]);
 {
 	_x setDamage 0; 
 	_config = configFile >> "CfgVehicles" >> (typeof _x);
@@ -26,5 +26,5 @@
 			};
 		};
 	};
-} forEach ((getMarkerPos "BRMini_SafeZone") nearObjects ["House",400]);
+} forEach ((getMarkerPos "UrbanW_SafeZone") nearObjects ["House",400]);
 diag_log "<CLEANUP>: MAP CLEANED";

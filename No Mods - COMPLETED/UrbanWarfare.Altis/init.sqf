@@ -8,6 +8,6 @@
 	Returns: n/a
 */
 
-BRMini_GameStarted = false;
+UrbanW_GameStarted = false;
 
 

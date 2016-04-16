@@ -1,13 +1,13 @@
 /*
 	File: reset.sqf
-	Description: Server reset for BRGH
-	Created By: PlayerUnknown & Lystic
+	Description: Server reset for UW
+	Created By: Lystic
 	Date: 10/20/2014
 	Parameters: n/a
 	Returns: n/a
 */
 DIAG_LOG "<RESET>: CLEANING UP MAP";
-call BRGH_fnc_mapCleanup;
+call UW_fnc_mapCleanup;
 
 DIAG_LOG "<RESET>: WAITING FOR THREADS";
 if(typename _this == typename []) then {
@@ -16,12 +16,12 @@ if(typename _this == typename []) then {
 };
 
 DIAG_LOG "<RESET>: RESETING VARIABLES";
-BRMini_GameStarted = false;
-BRMini_ZoneStarted = false; 
-BRMini_InGame = false;
-BRMini_ServerOn = true; 
+UrbanW_GameStarted = false;
+UrbanW_ZoneStarted = false; 
+UrbanW_InGame = false;
+UrbanW_ServerOn = true; 
 
-call BRGH_fnc_resetQuads;
+call UW_fnc_resetQuads;
 
 DIAG_LOG "<RESET>: STARTING SERVER";
-[] spawn BRGH_fnc_serverStart;
+[] spawn UW_fnc_serverStart;

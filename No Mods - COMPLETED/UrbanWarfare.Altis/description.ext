@@ -19,7 +19,7 @@ class Header
 
 class CfgUnitInsignia
 {
-	class brghID
+	class UWID
 	{
 		displayName = "Urban Warfare";
 		author = "PLAYERUNKNOWN";

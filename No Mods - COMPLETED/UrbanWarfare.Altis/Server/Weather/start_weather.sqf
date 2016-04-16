@@ -1,6 +1,6 @@
 /*
 	File: start_weather.sqf
-	Description: Realistic Weather Simulation for BRGH
+	Description: Realistic Weather Simulation for UW
 	Created By: Lystic
 	Date: 10/20/2014
 	Parameters: n/a
@@ -8,8 +8,8 @@
 */
 scriptName "Server_Lightning_Loop";
 
-BR_ServerRainValue = [0,0];
-publicVariable "BR_ServerRainValue";
+UR_ServerRainValue = [0,0];
+publicVariable "UR_ServerRainValue";
 
 _startingOverCast = random(1) max 0.1;
 _startingRain = random(1) max 0.1;
@@ -39,10 +39,10 @@ diag_log format["BR WEATHER gusts: %1", _startingWindGusts];
 [] spawn {
 	scriptName "Server_Weather_Sync";
 	while{true} do {
-		if(!BRMini_ServerOn) exitWith {};
+		if(!UrbanW_ServerOn) exitWith {};
 		uiSleep 5;
-		BR_ServerRainValue = [rain,gusts];
-		publicVariable "BR_ServerRainValue";
+		UR_ServerRainValue = [rain,gusts];
+		publicVariable "UR_ServerRainValue";
 	};
 };
 
@@ -52,8 +52,8 @@ if(overcast <= 0.7) exitWith {
 diag_log format["BR WEATHER: Handling Weather. Overcast: %1 Rain: %2",overcast,rain];
 
 while{true} do {
-	waitUntil{rain > 0.85 || !BRMini_ServerOn};
-	if(!BRMini_ServerOn) exitWith {};
+	waitUntil{rain > 0.85 || !UrbanW_ServerOn};
+	if(!UrbanW_ServerOn) exitWith {};
 	_x = allPlayers select floor(random(count(allPlayers)));
 	_xC = random(1600)-800;
 	_yC = random(1600)-800;
@@ -63,7 +63,7 @@ while{true} do {
 	_pos set[0,_xC];
 	_pos set[1,_yC];
 	_pos set[2,0];
-	BR_LS_PVAR = _pos;
-	publicVariable "BR_LS_PVAR";
+	UR_LS_PVAR = _pos;
+	publicVariable "UR_LS_PVAR";
 	uiSleep (7.5 + (4 - (3*rain)) - random(1));
 };

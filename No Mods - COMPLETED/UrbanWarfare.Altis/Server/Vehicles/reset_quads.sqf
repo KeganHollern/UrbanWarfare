@@ -17,4 +17,4 @@
 	_quad setDir (_x select 1);
 	_quad allowDamage false;
 	clearItemCargoGlobal _quad;
-} forEach BRMini_QuadData;
+} forEach UrbanW_QuadData;

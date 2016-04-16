@@ -8,7 +8,7 @@
 */
 
 diag_log "<PEH>:  ADDING EVENT HANDLERS";
-player addEventHandler ["Respawn",{_this spawn BRGH_fnc_clientReset;}];
+player addEventHandler ["Respawn",{_this spawn UW_fnc_clientReset;}];
 //--- spectator unit coloring features
 player addEventHandler ["Hit",{
 	[] spawn {

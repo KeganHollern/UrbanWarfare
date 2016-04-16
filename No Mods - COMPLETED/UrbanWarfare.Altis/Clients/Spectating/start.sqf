@@ -19,7 +19,7 @@ while{true} do {
 	_x = sin(_angle) * 280;
 	_y = cos(_angle) * 280;
 	
-	_groundPOS = markerPos "BRMini_SafeZone";
+	_groundPOS = markerPos "UrbanW_SafeZone";
 	
 	_cam = "camera" camCreate [(_groundPOS select 0) + _x,(_groundPOS select 1) + _y,280];
 	_cam cameraEffect ["Internal","back","specttt"];
@@ -40,7 +40,7 @@ while{true} do {
 	
 	_lastShot = objNull;
 	
-	while{(_groundPOS IsEqualTo (markerPos "BRMini_SafeZone")) && isPipEnabled} do {
+	while{(_groundPOS IsEqualTo (markerPos "UrbanW_SafeZone")) && isPipEnabled} do {
 		
 		_hour = date select 3;
 		if(_hour < 7 || _hour > 17) then {

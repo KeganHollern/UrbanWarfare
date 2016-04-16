@@ -1,7 +1,7 @@
 /*
 	File: config.sqf
-	Description: Server configuration for BRGH
-	Created By: PlayerUnknown & Lystic
+	Description: Server configuration for UW
+	Created By: Lystic
 	Date: 10/20/2014
 	Parameters: n/a
 	Returns: n/a
@@ -11,4 +11,4 @@
 Leaderboards_Key = "CHANGE ME TO SOMETHING RANDOM";
 
 //--- Minimum number of players to start a round
-BRMini_Min_Players = 2; 
+UrbanW_Min_Players = 2; 

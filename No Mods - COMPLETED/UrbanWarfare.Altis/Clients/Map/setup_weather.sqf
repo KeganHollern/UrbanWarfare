@@ -7,7 +7,7 @@
 	Returns: n/a
 */
 
-BR_lightning = {
+UR_lightning = {
 
 	_pos = _this;
 	_bolt = "LightningBolt" createVehicleLocal _pos;

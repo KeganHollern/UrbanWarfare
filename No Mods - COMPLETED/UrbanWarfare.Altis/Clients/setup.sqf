@@ -8,13 +8,13 @@
 */
 
 diag_log "<START>: ONE TIME SETUP STARTED";
-BRMINI_ZoneObjects = [];
-BRMINI_ReportItems = [];
+UrbanW_ZoneObjects = [];
+UrbanW_ReportItems = [];
 
-call BRGH_fnc_setupGUI;
-call BRGH_fnc_createInGameGUI;
+call UW_fnc_setupGUI;
+call UW_fnc_createInGameGUI;
 
-call BRGH_fnc_clientWeather;
+call UW_fnc_clientWeather;
 
 _servers = profileNamespace getVariable ["UW_Servers",[]];
 _index = _servers find serverName;
@@ -42,7 +42,7 @@ UW_WINS = _numWins;
 
 
 
-//--- TODO: Fix AFK Timer [] spawn BRGH_fnc_afkTimer;
+//--- TODO: Fix AFK Timer [] spawn UW_fnc_afkTimer;
 
 //--- Setup bird effect
 0 fadeMusic 0.5;
@@ -56,8 +56,8 @@ showSubtitles false;
 setObjectViewDistance [1000,0];
 setViewDistance 1500;
 
-[] spawn BRGH_fnc_autoReload;
-[] spawn BRGH_fnc_StartSpectator;
+[] spawn UW_fnc_autoReload;
+[] spawn UW_fnc_StartSpectator;
 
 [] spawn {
 	scriptName "Player_Grouping_Fix";
@@ -86,7 +86,7 @@ setViewDistance 1500;
 	_success = false;
 	if(_key in (ActionKeys "getOver")) then {
 		if((inputAction "Turbo" > 0) || (inputAction "MoveFastForward" > 0) || (speed player > 15)) then {
-			[] spawn BRGH_fnc_doJump;
+			[] spawn UW_fnc_doJump;
 			_success = true;
 		};
 	};
@@ -94,17 +94,17 @@ setViewDistance 1500;
 }];
 
 "Animation" addPublicVariableEventHandler {
-	(_this select 1) spawn BRGH_fnc_Animation;
+	(_this select 1) spawn UW_fnc_Animation;
 };
 
-"BR_LS_PVAR" addPublicVariableEventHandler {
-	(_this select 1) spawn BR_lightning;
+"UR_LS_PVAR" addPublicVariableEventHandler {
+	(_this select 1) spawn UR_lightning;
 };
 
-"BR_DRAWZONE" addPublicVariableEventHandler {
+"UR_DRAWZONE" addPublicVariableEventHandler {
 	_this spawn {
-		_old = BRMINI_ZoneObjects;
-		BRMINI_ZoneObjects = [];
+		_old = UrbanW_ZoneObjects;
+		UrbanW_ZoneObjects = [];
 		_data = _this select 1;
 		_textures = [];
 		{
@@ -117,26 +117,26 @@ setViewDistance 1500;
 			_obj setPosATL _position;
 			_obj enableSimulation false;
 			_textures set [count(_textures),_texture];
-			BRMINI_ZoneObjects set [count(BRMINI_ZoneObjects),_obj];
+			UrbanW_ZoneObjects set [count(UrbanW_ZoneObjects),_obj];
 		} forEach _data;
 		{	
 			_x setObjectTexture[0,_textures select _forEachIndex];
-		} forEach BRMINI_ZoneObjects;
+		} forEach UrbanW_ZoneObjects;
 		{
 			deleteVehicle _x;
 		} forEach _old;
 	};
 };
 
-"BR_ServerRainValue" addPublicVariableEventHandler {
+"UR_ServerRainValue" addPublicVariableEventHandler {
 	10 setRain ((_this select 1) select 0);
 	10 setGusts ((_this select 1) select 0);
 };
 
-"BR_SF_PVAR" addPublicVariableEventHandler {
-	(_this select 1) spawn BRGH_fnc_clientFog;
+"UR_SF_PVAR" addPublicVariableEventHandler {
+	(_this select 1) spawn UW_fnc_clientFog;
 };
 
-"BR_DT_PVAR" addPublicVariableEventHandler {
+"UR_DT_PVAR" addPublicVariableEventHandler {
 	(_this select 1) spawn BIS_fnc_dynamicText;
 };

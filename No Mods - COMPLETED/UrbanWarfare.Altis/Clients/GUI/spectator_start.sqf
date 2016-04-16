@@ -18,7 +18,7 @@ with uinamespace do {
 	};
 
 	_getInGamePlayers = {
-		_objects = ((getMarkerPos "BRMini_SafeZone") nearObjects ["Man",1000]);
+		_objects = ((getMarkerPos "UrbanW_SafeZone") nearObjects ["Man",1000]);
 		_players = [];
 		{
 			if(alive _x && isplayer _x) then {

@@ -1,12 +1,12 @@
 
-_showReport = BRMINI_ReportItems select 0;
-_weaponData = BRMINI_ReportItems select 1;
-_killData = BRMINI_ReportItems select 2;
-_killerType = BRMINI_ReportItems select 3;
-_killerHP = BRMINI_ReportItems select 4;
-_killedDistance = BRMINI_ReportItems select 5;
-_timeAlive = BRMINI_ReportItems select 6;
-_place = BRMINI_ReportItems select 7;
+_showReport = UrbanW_ReportItems select 0;
+_weaponData = UrbanW_ReportItems select 1;
+_killData = UrbanW_ReportItems select 2;
+_killerType = UrbanW_ReportItems select 3;
+_killerHP = UrbanW_ReportItems select 4;
+_killedDistance = UrbanW_ReportItems select 5;
+_timeAlive = UrbanW_ReportItems select 6;
+_place = UrbanW_ReportItems select 7;
 if(_showReport) then {
 	_text = "<t size='1.1' align='center'>You " + (if(_killerType == "") then {"Won!"} else {"Lost."}) + "</t><br/>";
 	_text = _text + "Kills: " + str(count(_killData)) + "<br/>";

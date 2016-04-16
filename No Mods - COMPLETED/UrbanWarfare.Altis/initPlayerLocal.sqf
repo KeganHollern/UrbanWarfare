@@ -6,13 +6,13 @@
 	Parameters: n/a
 	Returns: n/a
 */
-BRMINI_BZoneObjects = [];
+UrbanW_BZoneObjects = [];
 //--- fix for black zone not drawing in first round
 
-BRGH_fnc_updateBlackZone = {
+UW_fnc_updateBlackZone = {
 	params["_data"];
-	_old = BRMINI_BZoneObjects;
-	BRMINI_BZoneObjects = [];
+	_old = UrbanW_BZoneObjects;
+	UrbanW_BZoneObjects = [];
 	{
 		_type = _x select 0;
 		_position = _x select 1;
@@ -24,7 +24,7 @@ BRGH_fnc_updateBlackZone = {
 		_obj setPosATL _position;
 		_obj setObjectTexture [0,_texture];
 		_obj enableSimulation false;
-		BRMINI_BZoneObjects pushBack _obj;
+		UrbanW_BZoneObjects pushBack _obj;
 	} forEach _data;
 	{
 		deleteVehicle _x;
@@ -34,9 +34,9 @@ BRGH_fnc_updateBlackZone = {
 [] spawn {
 	scriptName "Black_Zone_Drawer";
 	while{true} do {
-		waitUntil{uiSleep 1; !isNil "BR_DRAWBLACKZONE"};
-		[BR_DRAWBLACKZONE] call BRGH_fnc_updateBlackZone;
-		BR_DRAWBLACKZONE = nil;
+		waitUntil{uiSleep 1; !isNil "UR_DRAWBLACKZONE"};
+		[UR_DRAWBLACKZONE] call UW_fnc_updateBlackZone;
+		UR_DRAWBLACKZONE = nil;
 	};
 };
 
@@ -44,13 +44,12 @@ BRGH_fnc_updateBlackZone = {
 onPreloadFinished {
 	onPreloadFinished {};
 	enableEnvironment false;
-	call BRGH_fnc_clientSetup;
-	[] spawn BRGH_fnc_clientStart;
+	call UW_fnc_clientSetup;
+	[] spawn UW_fnc_clientStart;
 };		
 player linkItem "ItemMap";
 player linkItem "ItemGPS";
 
-//--- Map Texture Fix
 if (getNumber ( missionConfigFile >> "briefing" ) != 1) then {
 	if ( getClientState == "BRIEFING READ" ) exitWith {};
 	waitUntil { getClientState == "BRIEFING SHOWN" };

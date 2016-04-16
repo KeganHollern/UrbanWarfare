@@ -1229,7 +1229,7 @@ class Mission
 		{
 			dataType="Marker";
 			position[]={21862.73,25.464355,21003.002};
-			name="BRMini_SafeZone";
+			name="UrbanW_SafeZone";
 			markerType="ELLIPSE";
 			type="ellipse";
 			fillName="Border";
