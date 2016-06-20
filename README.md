@@ -53,6 +53,44 @@ License
 
 ChangeLog:
 ==========
+- 1.2.1
+	1. Removed: Loot bug
+	2. Added: CfgMusic
+	3. Added: Ambient Sounds
+	4. Added: Limited Third Person
+	5. Updated: Spectator camera is now synced between clients
+	6. Updated: Unit recoil to be more realistic
+	7. Fixed: Players laying down after teleporting bug
+	8. Removed: Remnants of BattleRoyale ( as no more code from that project exists )
+	
+- 1.2.0
+	1. Removed: Player config
+	2. Removed: Round reset config entry
+	3. Added: Leaderboard key for resetting leaderboard data
+	4. Updated: Moved PlayersToStart into the server config
+	5. Updated: comments
+	
+- 1.1.1
+	1. Removed: VON Tags
+	2. Added: Thread names
+	3. Added: Delay in auto-reload to improve performance
+	4. Added: PIP Checks into spectator billboard
+	5. Updated: playableUnits to allPlayers
+	6. Updated: Circle barrier distance so an actual circle is formed
+	
+- 1.1.0
+	1. Removed: 10 Round reset
+	2. Updated: Spectator cam now centers on bluezones as they are updated
+	3. Fixed: Quadbike bugs
+	4. Fixed: Blackzone bugs
+	5. Fixed: Player teleport bug
+	
+- 1.0.9
+	1. Updated: reset_quads.sqf to delete and recreate quadbikes
+	2. Fixed: Bug that left medkits in quadbikes
+	3. Fixed: Blackzone drawing bug
+	4. Fixed: Quadbike positioning on reset
+	
 - 1.0.8
 	1. Added: Win tracking
 	2. Added: Start area name tags
