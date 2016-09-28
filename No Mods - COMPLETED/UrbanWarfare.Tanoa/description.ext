@@ -1,0 +1,34 @@
+author = "Ryan Cheeky";
+onLoadName = "Urban Warfare";
+onLoadMission = "Fast paced last man standing";
+joinUnassigned = 0;
+respawn = "BASE";	
+respawndelay = 5;
+enableDebugConsole = 1;
+disabledAI = 1;
+allowFunctionsRecompile = 1;
+showMap = 0;
+disableChannels[]={0,1,2,6};
+
+class Header
+{
+	gameType = DM;
+	minPlayers = 1;
+	maxPlayers = 30;
+};
+
+class CfgUnitInsignia
+{
+	class UWID
+	{
+		displayName = "Urban Warfare";
+		author = "PLAYERUNKNOWN";
+		texture = "images\insignia.paa";
+		textureVehicle = "";
+	};
+};
+
+#include "cfgLoot.hpp"
+#include "cfgFunctions.hpp"
+#include "cfgMusic.hpp"
+#include "GUI\includes.hpp"

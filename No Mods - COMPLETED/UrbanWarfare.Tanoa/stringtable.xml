@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<Project name="UrbanWarfare">
+	<Package name="Wait_For_Players">
+		<Key ID="str_UW_waitingFor">
+			<Original>WAITING FOR</Original>
+			<English>WAITING FOR</English>
+			<Czech></Czech>
+			<French></French>
+			<German></German>
+			<Italian></Italian>
+			<Polish></Polish>
+			<Portuguese></Portuguese>
+			<Russian></Russian>
+			<Spanish></Spanish>
+		</Key>
+		<Key ID="str_UW_morePlayers">
+			<Original>MORE PLAYERS</Original>
+			<English>MORE PLAYERS</English>
+			<Czech></Czech>
+			<French></French>
+			<German></German>
+			<Italian></Italian>
+			<Polish></Polish>
+			<Portuguese></Portuguese>
+			<Russian></Russian>
+			<Spanish></Spanish>
+		</Key>
+	</Package>
+</Project>
