@@ -1,0 +1,104 @@
+author = "Ryan Cheeky";
+onLoadName = "Urban Warfare";
+onLoadMission = "Fast paced last man standing";
+joinUnassigned = 0;
+respawn = "BASE";	
+respawndelay = 5;
+enableDebugConsole = 1;
+disabledAI = 1;
+allowFunctionsRecompile = 1;
+showMap = 0;
+disableChannels[]={0,1,2,6};
+loadScreen =  "\dsr_ui\Assets\logo.paa";
+
+class Header
+{
+	gameType = DM;
+	minPlayers = 1;
+	maxPlayers = 30;
+};
+
+wreckLimit = 3000;
+wreckRemovalMinTime = 5000;
+wreckRemovalMaxTime = 5000;
+corpseLimit = 1000;
+corpseRemovalMinTime = 20;
+corpseRemovalMaxTime = 25;
+debriefing = 0;
+
+
+showHUD[] = {
+	true,	// Scripted HUD (same as showHUD command)
+	true,	// Vehicle + soldier info
+	false,	// Vehicle radar [HIDDEN]
+	false,	// Vehicle compass [HIDDEN]
+	false,	// Tank direction indicator
+	true,	// Commanding menu
+	false,	// Group Bar
+	true	// HUD Weapon Cursors
+};
+
+class CfgFunctions
+{
+	class PluginMaster {
+		tag = "BASE";
+		class Functions {
+			file = "PluginMaster";
+			class init {};
+			class receiveFunctions {};
+			class receiveProgressData {};
+			class timeoutCheck {};
+			class start {};
+			class addEvents {};
+		};
+	};
+};
+
+
+class RscTitles
+{
+	class background {
+		idd = 7331;
+		fadein = 0;
+		fadeout = 2;
+		name="background";
+		duration = 1e10;
+		class Controls {
+			class PictureBackground
+			{
+				//--- TODO: add the rest of the errors
+				type=0;
+				font="TahomaB";
+				style=48;
+				shadow = 0;
+				colorBackground[] = {0,0,0,1};
+				colorText[] = {1,1,1,1};
+				tooltipColorText[] = {1,1,1,1};
+				tooltipColorBox[] = {1,1,1,1};
+				tooltipColorShade[] = {0,0,0,0.65};
+				tooltip = "";
+				idc = -1;
+				sizeEx = 0.1;
+				text = "background.paa";
+				x = "safezoneX";
+				y = "safezoneY";
+				w = "safezoneW";
+				h = "safezoneH";
+			};
+		};
+	};
+};
+
+class CfgUnitInsignia
+{
+	class UWID
+	{
+		displayName = "Urban Warfare";
+		author = "PLAYERUNKNOWN";
+		texture = "images\insignia.paa";
+		textureVehicle = "";
+	};
+};
+
+#include "cfgMusic.hpp"
+#include "GUI\includes.hpp"

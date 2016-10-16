@@ -1,3 +1,127 @@
+class CfgPatches
+{
+	class UrbanWarfare {};
+};
+class Plugins
+{
+	class UrbanWarfare
+	{
+		name = "Urban Warfare";
+		desc = "CQB Last Man Standing Gamemode";
+		tag = "UW";
+	};
+}
+class CfgFunctions
+{
+	class UW
+	{
+		//--- Server Functions
+		class Server {
+			file = "UrbanWarfare\Server";
+			isserver = 1;
+			class initServer {};
+		};
+		class Server_Loot {
+			file = "UrbanWarfare\Server\Loot";
+			isserver = 1;
+			class lootManager {};
+			class spawnLoot {};
+		};
+		class Server_Main {
+			file = "UrbanWarfare\Server\Main";
+			isserver = 1;
+			class serverConfig {};
+			class serverReset {};
+			class serverSetup {};
+			class serverStart {};
+		};
+		class Server_Map {
+			file = "UrbanWarfare\Server\Map";
+			isserver = 1;
+			class findPlayarea {};
+			class mapCleanup {};
+			class mapSetup {};
+			class startZoning {};
+			class vehicleHandler {};
+		};
+		class Server_Players {
+			file = "UrbanWarfare\Server\Players";
+			isserver = 1;
+			class deathMessages {};
+			class waitForPlayers {};
+		};
+		class Server_Vehicles {
+			file = "UrbanWarfare\Server\Vehicles";
+			isserver = 1;
+			class resetQuads {};
+		};
+		class Server_Weather {
+			file = "UrbanWarfare\Server\Weather";
+			isserver = 1;
+			class simpleFog {};
+			class startWeather {};
+		};
+		//--- Client Functions
+		class Client {
+			file = "UrbanWarfare\Client";
+			isclient = 1;
+			class initClient {};
+		};
+		class Client_Functions {
+			file = "UrbanWarfare\Client\Functions";
+			isclient = 1;
+			class animation {};
+		};
+		class Client_GUI {
+			file = "UrbanWarfare\Client\GUI";
+			isclient = 1;
+			class createInGameGUI {};
+			class deleteInGameGUI {};
+			class deleteSpectatorGUI {};
+			class endTags {};
+			class setupGUI {};
+			class showReport {};
+			class startSpectatorGUI {};
+			class startTags {};
+			class updateInGameGUI {};
+		};
+		class Client_Main {
+			file = "UrbanWarfare\Client\Main";
+			isclient = 1;
+			class clientReset {};
+			class clientSetup {};
+			class clientStart {};
+		};
+		class Client_Map {
+			file = "UrbanWarfare\Client\Map";
+			isclient = 1;
+			class clientFog {};
+			class clientWeather {};
+		};
+		class Client_Player {
+			file = "UrbanWarfare\Client\Player";
+			isclient = 1;
+			class afkTimer {};
+			class autoReload {};
+			class doJump {};
+			class playerEvents {};
+			class playerSetup {};
+		};
+		class Client_Spectating {
+			file = "UrbanWarfare\Client\Spectating";
+			isclient = 1;
+			class endSpectate {};
+			class spectate {};
+			class StartSpectator {};
+		};
+		class Client_Zoning {
+			file = "UrbanWarfare\Client\Zoning";
+			isclient = 1;
+			class circleDamage {};
+		};
+	};
+};
+
 class CfgLoot {
 	class BuildingTypes {
 		military[] = {
