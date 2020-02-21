@@ -42,5 +42,10 @@ player linkItem "ItemGPS";
 enableEnvironment false;
 
 call UW_fnc_clientSetup;
-0 cutRsc ["background","BLACK IN",1];
+1 fadeSound 2;
+1 fadeMusic 2;
+0 cutRsc ["background","BLACK IN",0];
+[player,true] remoteExec ["enableSimulationGlobal",2];
+[player,false] remoteExec ["hideObjectGlobal",2];
+player allowDamage true;
 [] spawn UW_fnc_clientStart;

@@ -1,9 +1,10 @@
-_this spawn {
-	_unit = _this select 0;
-	_jip = _this select 1;
+waitUntil{!(isNil "BASE_var_FUNCTIONLIST") && !(isNull (_this select 0))}; // wait for server and client to be ready 
+[BASE_var_FUNCTIONLIST] remoteExec ["BASE_fnc_start",(_this select 0)]; // start loadin process
 
-	waitUntil{_unit getVariable ["isReady",false]}; // wait for client to be ready
-	waitUntil{!isNil "BASE_var_FUNCTIONLIST"}; // wait for server to be ready 
-	[BASE_var_FUNCTIONLIST] remoteExecCall ["BASE_fnc_ReceiveProgressData",_unit]; // start loadin process
+params["_unit","_jip"];
 
-};
+//_unit allowDamage false; // These will be enabled once the client is ready to spawn
+//hideObjectGlobal _unit;
+//_unit enableSimulationGlobal false;
+
+

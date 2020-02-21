@@ -11,6 +11,18 @@ class Plugins
 		tag = "UW";
 	};
 }
+class CfgPluginEvents 
+{
+	class PlayerActionEvents {
+		overrides = 0;
+		class Action {
+			class UW_ActionInfo {
+				type = "UserType";
+				function = "UW_fnc_userAction";
+			};
+		};
+	};
+};
 class CfgFunctions
 {
 	class UW
@@ -66,6 +78,11 @@ class CfgFunctions
 			file = "UrbanWarfare\Client";
 			isclient = 1;
 			class initClient {};
+		};
+		class Client_PluginEvents {
+			file = "UrbanWarfare\Client\PluginEvents";
+			isclient = 1;
+			class userAction {};
 		};
 		class Client_Functions {
 			file = "UrbanWarfare\Client\Functions";

@@ -9,7 +9,6 @@ disabledAI = 1;
 allowFunctionsRecompile = 1;
 showMap = 0;
 disableChannels[]={0,1,2,6};
-loadScreen =  "\dsr_ui\Assets\logo.paa";
 
 class Header
 {
@@ -44,12 +43,7 @@ class CfgFunctions
 		tag = "BASE";
 		class Functions {
 			file = "PluginMaster";
-			class init {};
-			class receiveFunctions {};
-			class receiveProgressData {};
-			class timeoutCheck {};
 			class start {};
-			class addEvents {};
 		};
 	};
 };
